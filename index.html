@@ -364,15 +364,11 @@
     function carregarTrailers() {
     const grid = document.getElementById('main-grid');
     if (!grid) return;
+    grid.innerHTML = "";
     
-    grid.innerHTML = ""; // Limpa a grid antes de carregar
-
-    // Removemos o .slice() para mostrar TODOS da lista
     trailers.forEach(filme => {
         const card = document.createElement('div');
         card.className = 'video-card';
-        
-        // Configura o clique para abrir o modal
         card.onclick = function() { ativarVideo(filme.idVideo); };
         
         card.innerHTML = `
@@ -381,6 +377,9 @@
             </div>
             <div class="content-area">
                 <h3>${filme.titulo}</h3>
+                <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 8px; line-height: 1.3;">
+                    ${filme.sinopse ? filme.sinopse.substring(0, 80) + '...' : ''}
+                </p>
             </div>
         `;
         grid.appendChild(card);
@@ -394,6 +393,7 @@
 </script>
 </body>
 </html>
+
 
 
 

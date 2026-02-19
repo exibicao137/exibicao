@@ -202,6 +202,7 @@
 </footer>
 
 <script>
+    // LISTA DE VÍDEOS
     const trailers = [
         {
             titulo: "Superman (2025) - Trailer Oficial",
@@ -238,26 +239,54 @@
             idVideo: "F9U-p9Xp-0U",
             dataPublicacao: "2026-02-19",
             sinopse: "O confronto final entre Billy Bruto e Capitão Pátria. A sátira de super-heróis mais ácida chega ao seu clímax sangrento."
-        },
-        {
-            titulo: "One Piece (Live Action) - 2ª Temporada",
-            idVideo: "m5N2oY_O6wY",
-            dataPublicacao: "2026-02-19",
-            sinopse: "Luffy e os Piratas do Chapéu de Palha entram na Grand Line e se preparam para enfrentar a organização Baroque Works."
-        },
-        {
-            titulo: "Round 6 - 2ª Temporada",
-            idVideo: "N_S_p8x2mSM",
-            dataPublicacao: "2026-02-18",
-            sinopse: "Gi-hun retorna para os jogos mortais, mas desta vez com um plano: destruir a organização por trás da competição."
         }
     ];
 
     let slideAtual = 0;
 
+    // 1. FUNÇÃO PARA ABRIR O VÍDEO (AGORA GLOBAL)
+    window.ativarVideo = function(id) {
+        console.log("Tentando abrir o vídeo ID: " + id);
+        const modal = document.getElementById('videoModal');
+        const player = document.getElementById('videoPlayer');
+        
+        if (modal && player) {
+            player.innerHTML = `
+                <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+                    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+                        src="https://www.youtube.com/embed/${id}?autoplay=1" 
+                        frameborder="0" 
+                        allow="autoplay; encrypted-media; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>`;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        } else {
+            alert("Erro ao carregar o player de vídeo.");
+        }
+    };
+
+    // 2. FUNÇÃO PARA FECHAR
+    window.fecharVideo = function() {
+        document.getElementById('videoModal').style.display = 'none';
+        document.getElementById('videoPlayer').innerHTML = "";
+        document.body.style.overflow = 'auto';
+    };
+
+    function mudarSlide(direcao) {
+        const slides = document.querySelectorAll('.slide');
+        if (slides.length === 0) return;
+        slides[slideAtual].classList.remove('active');
+        slideAtual = (slideAtual + direcao + slides.length) % slides.length;
+        slides[slideAtual].classList.add('active');
+    }
+
     function configurarCarrossel() {
         trailers.sort((a, b) => new Date(b.dataPublicacao) - new Date(a.dataPublicacao));
         const container = document.getElementById('carousel-inner');
+        if (!container) return;
+        
         const destaques = trailers.slice(0, 3);
 
         container.innerHTML = destaques.map((filme, index) => `
@@ -278,21 +307,15 @@
         setInterval(() => mudarSlide(1), 5000);
     }
 
-    function mudarSlide(direcao) {
-        const slides = document.querySelectorAll('.slide');
-        if (slides.length === 0) return;
-        slides[slideAtual].classList.remove('active');
-        slideAtual = (slideAtual + direcao + slides.length) % slides.length;
-        slides[slideAtual].classList.add('active');
-    }
-
     function carregarTrailers() {
         const grid = document.getElementById('main-grid');
+        if (!grid) return;
         grid.innerHTML = "";
         trailers.forEach(filme => {
             const card = document.createElement('div');
             card.className = 'video-card';
-            card.onclick = () => ativarVideo(filme.idVideo);
+            // Adicionamos o evento de clique direto no card
+            card.onclick = function() { ativarVideo(filme.idVideo); };
             card.innerHTML = `
                 <div class="video-container" style="background-image: url('https://img.youtube.com/vi/${filme.idVideo}/mqdefault.jpg');">
                     <div class="play-button"></div>
@@ -303,24 +326,6 @@
         });
     }
 
-    function ativarVideo(id) {
-        const modal = document.getElementById('videoModal');
-        const player = document.getElementById('videoPlayer');
-        player.innerHTML = `
-            <div style="position: relative; padding-bottom: 56.25%; height: 0;">
-                <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
-                    src="https://www.youtube.com/embed/${id}?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-            </div>`;
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }
-
-    function fecharVideo() {
-        document.getElementById('videoModal').style.display = 'none';
-        document.getElementById('videoPlayer').innerHTML = "";
-        document.body.style.overflow = 'auto';
-    }
-
     window.onload = () => {
         configurarCarrossel();
         carregarTrailers();
@@ -328,3 +333,4 @@
 </script>
 </body>
 </html>
+

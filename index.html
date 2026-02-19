@@ -204,43 +204,97 @@
 <script>
     // LISTA DE VÍDEOS
     const trailers = [
-        {
-            titulo: "Superman (2025) - Trailer Oficial",
-            idVideo: "qdeLekd6vDg",
-            dataPublicacao: "2026-02-18",
-            sinopse: "O novo início do universo DC nos cinemas. Kal-El busca equilibrar sua herança kryptoniana com sua criação humana."
-        },
-        {
-            titulo: "Mickey 17 - Trailer Legendado",
-            idVideo: "zk9XewcSgDw",
-            dataPublicacao: "2026-02-18",
-            sinopse: "Um funcionário 'descartável' enviado para colonizar um mundo de gelo morre e é regenerado com as suas memórias."
-        },
-        {
-            titulo: "The Last of Us - 2ª Temporada",
-            idVideo: "2MYnGPQyVdg",
-            dataPublicacao: "2026-02-18",
-            sinopse: "Após cinco anos de paz, o passado de Joel e Ellie volta para assombrá-los, desencadeando um novo conflito."
-        },
-        {
-            titulo: "Moana 2 - Trailer Oficial",
-            idVideo: "hDZ7y8RP5HE",
-            dataPublicacao: "2026-02-18",
-            sinopse: "Moana e Maui partem numa nova viagem épica juntamente com uma tripulação de marinheiros improváveis."
-        },
-        {
-            titulo: "Senhor dos Anéis: Os Anéis de Poder",
-            idVideo: "izM6Y_X_I6Y",
-            dataPublicacao: "2026-02-19",
-            sinopse: "A ascensão de Sauron e a criação dos anéis continuam a moldar o destino da Terra Média nesta produção visualmente impecável."
-        },
-        {
-            titulo: "The Boys - 5ª Temporada (Final)",
-            idVideo: "F9U-p9Xp-0U",
-            dataPublicacao: "2026-02-19",
-            sinopse: "O confronto final entre Billy Bruto e Capitão Pátria. A sátira de super-heróis mais ácida chega ao seu clímax sangrento."
-        }
-    ];
+    {
+        titulo: "Gladiador II",
+        idVideo: "Gv6_D_R46hU", 
+        dataPublicacao: "2024-11-14",
+        sinopse: "Anos após presenciar a morte de Maximus, Lucius é forçado a entrar no Coliseu para lutar pelo futuro de Roma."
+    },
+    {
+        titulo: "Duna: A Profecia",
+        idVideo: "9S7vVvT0pSc",
+        dataPublicacao: "2024-11-17",
+        sinopse: "Situada 10.000 anos antes de Paul Atreides, a série segue as irmãs Harkonnen enquanto combatem forças que ameaçam o futuro da humanidade."
+    },
+    {
+        titulo: "Wicked",
+        idVideo: "6COmYeLsz4c",
+        dataPublicacao: "2024-11-21",
+        sinopse: "A história não contada das bruxas de Oz, focada na improvável amizade entre Elphaba e Glinda."
+    },
+    {
+        titulo: "Moana 2",
+        idVideo: "hDZ7y8RP5HE",
+        dataPublicacao: "2024-11-27",
+        sinopse: "Moana e Maui reúnem-se para uma nova e vasta viagem ao lado de uma tripulação de marinheiros improváveis."
+    },
+    {
+        titulo: "Senhor dos Anéis: A Guerra dos Rohirrim",
+        idVideo: "gJ9BRe_fS-w",
+        dataPublicacao: "2024-12-12",
+        sinopse: "Um filme de animação que explora a história não contada por trás do Abismo de Helm, centenas de anos antes da trilogia original."
+    },
+    {
+        titulo: "Sonic 3: O Filme",
+        idVideo: "qSu6i2iFKn0",
+        dataPublicacao: "2024-12-25",
+        sinopse: "Sonic, Knuckles e Tails reúnem-se para enfrentar um novo e poderoso adversário: Shadow, o Ouriço."
+    },
+    {
+        titulo: "Round 6 - 2ª Temporada",
+        idVideo: "N_S_p8x2mSM",
+        dataPublicacao: "2024-12-26",
+        sinopse: "Três anos após vencer o Jogo do Lula, o Jogador 456 desiste de ir para os EUA e volta com um novo objetivo."
+    },
+    {
+        titulo: "Mickey 17",
+        idVideo: "zk9XewcSgDw",
+        dataPublicacao: "2025-01-31",
+        sinopse: "Um funcionário descartável numa expedição humana enviada para colonizar o mundo gelado de Niflheim recusa-se a deixar que o seu substituto o substitua."
+    },
+    {
+        titulo: "Demolidor: Renascido",
+        idVideo: "5TshshZAtiQ",
+        dataPublicacao: "2025-03-04",
+        sinopse: "Matt Murdock e Wilson Fisk tentam deixar as suas rivalidades de lado para ajudar o povo de Nova Iorque, mas o passado volta para assombrar."
+    },
+    {
+        titulo: "Andor - 2ª Temporada",
+        idVideo: "W_K7m7YVlO4", 
+        dataPublicacao: "2025-04-22",
+        sinopse: "A conclusão da jornada de Cassian Andor enquanto ele se torna o herói que conhecemos em Rogue One."
+    },
+    {
+        titulo: "Superman",
+        idVideo: "qdeLekd6vDg",
+        dataPublicacao: "2025-07-11",
+        sinopse: "O filme explora a jornada de Superman para reconciliar a sua herança kryptoniana com a sua criação humana em Smallville."
+    },
+    {
+        titulo: "The Boys - 5ª Temporada",
+        idVideo: "F9U-p9Xp-0U",
+        dataPublicacao: "2025-08-15",
+        sinopse: "A temporada final da batalha sangrenta entre os Rapazes e os Sete de Capitão Pátria."
+    },
+    {
+        titulo: "The Last of Us - 2ª Temporada",
+        idVideo: "2MYnGPQyVdg",
+        dataPublicacao: "2025-09-01",
+        sinopse: "Cinco anos após a sua perigosa jornada através dos Estados Unidos pós-pandémicos, Ellie e Joel vivem em Jackson."
+    },
+    {
+        titulo: "Stranger Things 5",
+        idVideo: "vSss_000pUA",
+        dataPublicacao: "2025-10-30",
+        sinopse: "A batalha final por Hawkins e pelo Mundo Invertido chega à sua conclusão épica."
+    },
+    {
+        titulo: "Fallout - 2ª Temporada",
+        idVideo: "06O_3A2o6is",
+        dataPublicacao: "2026-02-15",
+        sinopse: "Lucy e o Ghoul viajam para as luzes brilhantes de New Vegas no próximo capítulo da sobrevivência na Wasteland."
+    }
+];
 
     let slideAtual = 0;
 
@@ -333,4 +387,5 @@
 </script>
 </body>
 </html>
+
 

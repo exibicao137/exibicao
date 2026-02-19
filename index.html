@@ -362,23 +362,30 @@
     }
 
     function carregarTrailers() {
-        const grid = document.getElementById('main-grid');
-        if (!grid) return;
-        grid.innerHTML = "";
-        trailers.forEach(filme => {
-            const card = document.createElement('div');
-            card.className = 'video-card';
-            // Adicionamos o evento de clique direto no card
-            card.onclick = function() { ativarVideo(filme.idVideo); };
-            card.innerHTML = `
-                <div class="video-container" style="background-image: url('https://img.youtube.com/vi/${filme.idVideo}/mqdefault.jpg');">
-                    <div class="play-button"></div>
-                </div>
-                <div class="content-area"><h3>${filme.titulo}</h3></div>
-            `;
-            grid.appendChild(card);
-        });
-    }
+    const grid = document.getElementById('main-grid');
+    if (!grid) return;
+    
+    grid.innerHTML = ""; // Limpa a grid antes de carregar
+
+    // Removemos o .slice() para mostrar TODOS da lista
+    trailers.forEach(filme => {
+        const card = document.createElement('div');
+        card.className = 'video-card';
+        
+        // Configura o clique para abrir o modal
+        card.onclick = function() { ativarVideo(filme.idVideo); };
+        
+        card.innerHTML = `
+            <div class="video-container" style="background-image: url('https://img.youtube.com/vi/${filme.idVideo}/mqdefault.jpg');">
+                <div class="play-button"></div>
+            </div>
+            <div class="content-area">
+                <h3>${filme.titulo}</h3>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+}
 
     window.onload = () => {
         configurarCarrossel();
@@ -387,5 +394,6 @@
 </script>
 </body>
 </html>
+
 
 

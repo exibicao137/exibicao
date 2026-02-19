@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exibição | Trailers e Lançamentos</title>
+    <style>
+        :root {
+            --primary: #e50914;
+            --bg: #111;
+            --card-bg: #1f1f1f;
+            --text: #ffffff;
+            --text-dim: #b3b3b3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--primary);
+            sticky: top;
+        }
+
+        .logo { color: var(--primary); font-size: 1.5rem; font-weight: bold; letter-spacing: 1px; }
+
+        .container { padding: 2rem 5%; max-width: 1200px; margin: auto; }
+
+        .hero-carousel {
+    width: 100%;
+    height: 60vh;
+    position: relative;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.slide {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+}
+
+.slide.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(90deg, rgba(0,0,0,0.85) 20%, transparent 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    padding: 0 5%;
+    color: white;
+    max-width: 600px;
+}
+
+.hero-content h1 { font-size: 3rem; margin-bottom: 10px; }
+.hero-content p { font-size: 1.1rem; color: #ccc; margin-bottom: 20px; }
+
+.carousel-controls {
+    position: absolute;
+    bottom: 20px;
+    right: 5%;
+    z-index: 10;
+}
+
+.carousel-controls button {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid white;
+    color: white;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .video-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .video-card:hover { transform: translateY(-5px); }
+
+        /* CSS da Thumbnail e Botão Play */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border: none;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px; height: 60px;
+            background: rgba(229, 9, 20, 0.9);
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .play-button::after {
+            content: "";
+            border-style: solid;
+            border-width: 12px 0 12px 20px;
+            border-color: transparent transparent transparent white;
+            position: absolute;
+            top: 18px; left: 23px;
+        }
+
+        .video-card:hover .play-button { transform: translate(-50%, -50%) scale(1.1); background: var(--primary); }
+
+        .content-area { padding: 15px; }
+        .tag { color: var(--primary); font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
+        h3 { margin: 5px 0; font-size: 1.1rem; }
+        .description { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 10px; }
+        .meta-info { font-size: 0.8rem; background: #2a2a2a; padding: 8px; border-radius: 5px; }
+
+        footer { margin-top: 50px; padding: 30px; background: #000; text-align: center; }
+        .footer-links a { color: var(--text-dim); text-decoration: none; margin: 0 10px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">EXIBIÇÃO</div>
+</header>
+
+<div class="hero-carousel" id="hero-carousel">
+    <div id="carousel-inner">
+        </div>
+    
+    <div class="carousel-controls">
+        <button onclick="mudarSlide(-1)">❮</button>
+        <button onclick="mudarSlide(1)">❯</button>
+    </div>
+</div>
+
+<div class="container">
+    <h1>Trailers em Destaque</h1>
+    <div class="video-grid" id="main-grid">
+        </div>
+</div>
+
+<footer style="text-align: center; padding: 40px 0; color: #777; border-top: 1px solid #222;">
+    <p>&copy; 2026 Exibição - Todos os direitos reservados.</p>
+    <div style="margin-top: 10px;">
+        <a href="privacidade.html" style="color: #777; margin: 0 10px; text-decoration: none;">Privacidade</a> | 
+        <a href="termos.html" style="color: #777; margin: 0 10px; text-decoration: none;">Termos de Uso</a>
+    </div>
+</footer>
+
+<script>
+    // LISTA DE VÍDEOS: Adicione ou remova aqui
+    const trailers = [
+    {
+        titulo: "Superman (2025) - Trailer Oficial",
+        idVideo: "qdeLekd6vDg", // Canal Ingresso.com (Geralmente funciona no PC)
+        categoria: "Ação",
+        sinopse: "O novo início do universo DC nos cinemas. Kal-El busca equilibrar sua herança kryptoniana com sua criação humana como Clark Kent.",
+        diretor: "James Gunn",
+        elenco: "David Corenswet, Rachel Brosnahan",
+        ano: "2025",
+        duracao: "2m 58s"
+    },
+    {
+        titulo: "Mickey 17 - Trailer Legendado",
+        idVideo: "zk9XewcSgDw", // Canal Ingresso.com
+        categoria: "Ficção Científica",
+        sinopse: "Um funcionário 'descartável' enviado para colonizar um mundo de gelo morre e é regenerado com as suas memórias.",
+        diretor: "Bong Joon-ho",
+        elenco: "Robert Pattinson, Mark Ruffalo",
+        ano: "2025",
+        duracao: "2m 24s"
+    },
+    {
+        titulo: "The Last of Us - 2ª Temporada",
+        idVideo: "2MYnGPQyVdg", // Canal One Media (Focado em trailers)
+        categoria: "Série / Drama",
+        sinopse: "Após cinco anos de paz, o passado de Joel e Ellie volta para assombrá-los, desencadeando um novo conflito.",
+        diretor: "Craig Mazin",
+        elenco: "Pedro Pascal, Bella Ramsey",
+        ano: "2025",
+        duracao: "2m 17s"
+    },
+    {
+        titulo: "Moana 2 - Trailer Oficial",
+        idVideo: "hDZ7y8RP5HE", // Este já confirmaste que funciona
+        categoria: "Animação",
+        sinopse: "Moana e Maui partem numa nova viagem épica juntamente com uma tripulação de marinheiros improváveis.",
+        diretor: "David G. Derrick Jr.",
+        elenco: "Auli'i Cravalho, Dwayne Johnson",
+        ano: "2024",
+        duracao: "2m 15s"
+    },
+    {
+    titulo: "Stranger Things 5",
+    idVideo: "vSss_000pUA", 
+    categoria: "Série / Netflix",
+    sinopse: "A batalha final por Hawkins e pelo mundo. Eleven e seus amigos enfrentam Vecna em uma conclusão épica que promete mudar tudo no Mundo Invertido.",
+    diretor: "The Duffer Brothers",
+    elenco: "Millie Bobby Brown, Finn Wolfhard",
+    ano: "2025/2026",
+    duracao: "2m 10s"
+    
+},
+{
+    titulo: "Wandinha - 2ª Temporada",
+    idVideo: "9vS87_6l0Ac",
+    categoria: "Série / Netflix",
+    sinopse: "Wandinha Addams retorna à Escola Nunca Mais. Mais mistérios, mais sarcasmo e uma nova ameaça sobrenatural que investiga o passado da família Addams.",
+    diretor: "Tim Burton",
+    elenco: "Jenna Ortega",
+    ano: "2025",
+    duracao: "1m 45s"
+},
+{
+    titulo: "Senhor dos Anéis: Os Anéis de Poder",
+    idVideo: "izM6Y_X_I6Y",
+    dataPublicacao: "2026-02-19",
+    categoria: "Série / Prime Video",
+    sinopse: "A ascensão de Sauron e a criação dos anéis continuam a moldar o destino da Terra Média nesta produção visualmente impecável do Prime Video.",
+    diretor: "J.D. Payne",
+    elenco: "Morfydd Clark, Charlie Vickers",
+    ano: "2024/2025",
+    duracao: "2m 35s"
+},
+{
+    titulo: "The Boys - 5ª Temporada (Final)",
+    idVideo: "F9U-p9Xp-0U",
+    dataPublicacao: "2026-02-19",
+    categoria: "Série / Prime Video",
+    sinopse: "O confronto final entre Billy Bruto e Capitão Pátria. A sátira de super-heróis mais ácida do streaming chega ao seu clímax sangrento e político.",
+    diretor: "Eric Kripke",
+    elenco: "Karl Urban, Antony Starr",
+    ano: "2025/2026",
+    duracao: "2m 20s"
+},
+{
+    titulo: "One Piece (Live Action) - 2ª Temporada",
+    idVideo: "m5N2oY_O6wY", // ID de Teaser de Produção
+    dataPublicacao: "2026-02-19",
+    categoria: "Série / Netflix",
+    sinopse: "Luffy e os Piratas do Chapéu de Palha entram na Grand Line e se preparam para enfrentar a organização Baroque Works em Alabasta.",
+    diretor: "Matt Owens",
+    elenco: "Iñaki Godoy, Emily Rudd",
+    ano: "2025",
+    duracao: "1m 55s"
+},
+{
+    titulo: "Fallout - 2ª Temporada",
+    idVideo: "06O_3A2o6is", // ID Simbólico para teste
+    categoria: "Série / Prime Video",
+    sinopse: "Lucy e o Ghoul viajam para New Vegas para descobrir os segredos mais profundos da Vault-Tec e o destino da humanidade no deserto pós-apocalíptico.",
+    diretor: "Jonathan Nolan",
+    elenco: "Ella Purnell, Walton Goggins",
+    ano: "2026",
+    duracao: "2m 05s"
+},
+{
+    titulo: "Round 6 - 2ª Temporada",
+    idVideo: "N_S_p8x2mSM",
+    categoria: "Série / Netflix",
+    sinopse: "Gi-hun retorna para os jogos mortais, mas desta vez com um plano: destruir a organização por trás da competição custe o que custar.",
+    diretor: "Hwang Dong-hyuk",
+    elenco: "Lee Jung-jae",
+    ano: "2025",
+    duracao: "2m 15s"
+}
+    
+];
+
+    const grid = document.getElementById('main-grid');
+
+    function carregarTrailers() {
+        grid.innerHTML = "";
+        trailers.forEach(filme => {
+            const thumbUrl = `https://img.youtube.com/vi/${filme.idVideo}/hqdefault.jpg`;
+            const card = document.createElement('div');
+            card.className = 'video-card';
+            card.innerHTML = `
+    <div class="video-container" id="container-${filme.idVideo}" 
+         style="background-image: url('${thumbUrl}');" 
+         onclick="ativarVideo('${filme.idVideo}')">
+        <div class="play-button"></div>
+    </div>
+    <div class="content-area">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="tag">${filme.categoria}</span>
+            <span style="font-size: 0.7rem; color: #777;">${filme.duracao}</span>
+        </div>
+        <h3>${filme.titulo}</h3>
+        <p class="description" style="height: auto; max-height: none; margin-bottom: 15px;">
+            ${filme.sinopse}
+        </p>
+        <div class="meta-info">
+            <strong>Direção:</strong> ${filme.diretor}<br>
+            <strong>Elenco:</strong> ${filme.elenco}<br>
+            <strong>Lançamento:</strong> ${filme.ano}
+        </div>
+    </div>
+`;
+            grid.appendChild(card);
+        });
+    }
+
+    function ativarVideo(id) {
+    const container = document.getElementById(`container-${id}`);
+    
+    // Removemos o autoplay=1 para evitar o bloqueio de segurança do player
+    const urlBase = `https://www.youtube.com/embed/${id}?rel=0`;
+    
+    container.innerHTML = `
+        <iframe 
+            src="${urlBase}" 
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen 
+            style="border: 0; position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+        </iframe>`;
+    }
+
+    window.onload = carregarTrailers;
+</script>
+</body>
+</html>

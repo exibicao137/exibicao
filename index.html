@@ -28,73 +28,74 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 2px solid var(--primary);
-            sticky: top;
         }
 
         .logo { color: var(--primary); font-size: 1.5rem; font-weight: bold; letter-spacing: 1px; }
 
         .container { padding: 2rem 5%; max-width: 1200px; margin: auto; }
 
+        /* Estilos do Carrossel */
         .hero-carousel {
-    width: 100%;
-    height: 60vh;
-    position: relative;
-    overflow: hidden;
-    background-color: #000;
-}
+            width: 100%;
+            height: 60vh;
+            position: relative;
+            overflow: hidden;
+            background-color: #000;
+        }
 
-.slide {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    opacity: 0;
-    transition: opacity 0.8s ease-in-out;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    z-index: 1;
-}
+        .slide {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            z-index: 1;
+        }
 
-.slide.active {
-    opacity: 1;
-    z-index: 2;
-}
+        .slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
 
-.hero-overlay {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(90deg, rgba(0,0,0,0.85) 20%, transparent 100%);
-}
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(90deg, rgba(0,0,0,0.85) 20%, transparent 100%);
+        }
 
-.hero-content {
-    position: relative;
-    z-index: 3;
-    padding: 0 5%;
-    color: white;
-    max-width: 600px;
-}
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            padding: 0 5%;
+            color: white;
+            max-width: 600px;
+        }
 
-.hero-content h1 { font-size: 3rem; margin-bottom: 10px; }
-.hero-content p { font-size: 1.1rem; color: #ccc; margin-bottom: 20px; }
+        .hero-content h1 { font-size: 3rem; margin-bottom: 10px; }
+        .hero-content p { font-size: 1.1rem; color: #ccc; margin-bottom: 20px; }
 
-.carousel-controls {
-    position: absolute;
-    bottom: 20px;
-    right: 5%;
-    z-index: 10;
-}
+        .carousel-controls {
+            position: absolute;
+            bottom: 20px;
+            right: 5%;
+            z-index: 10;
+        }
 
-.carousel-controls button {
-    background: rgba(255,255,255,0.1);
-    border: 1px solid white;
-    color: white;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-left: 5px;
-}
+        .carousel-controls button {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid white;
+            color: white;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-left: 5px;
+        }
 
+        /* Estilos da Grid */
         .video-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -110,23 +111,13 @@
 
         .video-card:hover { transform: translateY(-5px); }
 
-        /* CSS da Thumbnail e Botão Play */
         .video-container {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 */
+            padding-bottom: 56.25%;
             height: 0;
             background-size: cover;
             background-position: center;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            border: none;
         }
 
         .play-button {
@@ -148,16 +139,11 @@
             top: 18px; left: 23px;
         }
 
-        .video-card:hover .play-button { transform: translate(-50%, -50%) scale(1.1); background: var(--primary); }
-
         .content-area { padding: 15px; }
-        .tag { color: var(--primary); font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
         h3 { margin: 5px 0; font-size: 1.1rem; }
-        .description { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 10px; }
-        .meta-info { font-size: 0.8rem; background: #2a2a2a; padding: 8px; border-radius: 5px; }
 
-        footer { margin-top: 50px; padding: 30px; background: #000; text-align: center; }
-        .footer-links a { color: var(--text-dim); text-decoration: none; margin: 0 10px; font-size: 0.8rem; }
+        footer { margin-top: 50px; padding: 40px 0; background: #000; text-align: center; color: #777; border-top: 1px solid #222; }
+        footer a { color: #777; text-decoration: none; margin: 0 10px; }
     </style>
 </head>
 <body>
@@ -167,9 +153,7 @@
 </header>
 
 <div class="hero-carousel" id="hero-carousel">
-    <div id="carousel-inner">
-        </div>
-    
+    <div id="carousel-inner"></div>
     <div class="carousel-controls">
         <button onclick="mudarSlide(-1)">❮</button>
         <button onclick="mudarSlide(1)">❯</button>
@@ -178,233 +162,136 @@
 
 <div class="container">
     <h1>Trailers em Destaque</h1>
-    <div class="video-grid" id="main-grid">
-        </div>
+    <div class="video-grid" id="main-grid"></div>
 </div>
 
-<footer style="text-align: center; padding: 40px 0; color: #777; border-top: 1px solid #222;">
+<footer>
     <p>&copy; 2026 Exibição - Todos os direitos reservados.</p>
-    <div style="margin-top: 10px;">
-        <a href="privacidade.html" style="color: #777; margin: 0 10px; text-decoration: none;">Privacidade</a> | 
-        <a href="termos.html" style="color: #777; margin: 0 10px; text-decoration: none;">Termos de Uso</a>
+    <div>
+        <a href="privacidade.html">Privacidade</a> | 
+        <a href="termos.html">Termos de Uso</a>
     </div>
 </footer>
 
 <script>
-    // LISTA DE VÍDEOS: Adicione ou remova aqui
     const trailers = [
-    {
-        titulo: "Superman (2025) - Trailer Oficial",
-        idVideo: "qdeLekd6vDg", // Canal Ingresso.com (Geralmente funciona no PC)
-        dataPublicacao: "2026-02-18",
-        categoria: "Ação",
-        sinopse: "O novo início do universo DC nos cinemas. Kal-El busca equilibrar sua herança kryptoniana com sua criação humana como Clark Kent.",
-        diretor: "James Gunn",
-        elenco: "David Corenswet, Rachel Brosnahan",
-        ano: "2025",
-        duracao: "2m 58s"
-    },
-    {
-        titulo: "Mickey 17 - Trailer Legendado",
-        idVideo: "zk9XewcSgDw", // Canal Ingresso.com
-        dataPublicacao: "2026-02-18",
-        categoria: "Ficção Científica",
-        sinopse: "Um funcionário 'descartável' enviado para colonizar um mundo de gelo morre e é regenerado com as suas memórias.",
-        diretor: "Bong Joon-ho",
-        elenco: "Robert Pattinson, Mark Ruffalo",
-        ano: "2025",
-        duracao: "2m 24s"
-    },
-    {
-        titulo: "The Last of Us - 2ª Temporada",
-        idVideo: "2MYnGPQyVdg", // Canal One Media (Focado em trailers)
-        dataPublicacao: "2026-02-18",
-        categoria: "Série / Drama",
-        sinopse: "Após cinco anos de paz, o passado de Joel e Ellie volta para assombrá-los, desencadeando um novo conflito.",
-        diretor: "Craig Mazin",
-        elenco: "Pedro Pascal, Bella Ramsey",
-        ano: "2025",
-        duracao: "2m 17s"
-    },
-    {
-        titulo: "Moana 2 - Trailer Oficial",
-        idVideo: "hDZ7y8RP5HE", // Este já confirmaste que funciona
-        dataPublicacao: "2026-02-18",
-        categoria: "Animação",
-        sinopse: "Moana e Maui partem numa nova viagem épica juntamente com uma tripulação de marinheiros improváveis.",
-        diretor: "David G. Derrick Jr.",
-        elenco: "Auli'i Cravalho, Dwayne Johnson",
-        ano: "2024",
-        duracao: "2m 15s"
-    },
-    {
-    titulo: "Stranger Things 5",
-    idVideo: "vSss_000pUA", 
-        dataPublicacao: "2026-02-18",
-    categoria: "Série / Netflix",
-    sinopse: "A batalha final por Hawkins e pelo mundo. Eleven e seus amigos enfrentam Vecna em uma conclusão épica que promete mudar tudo no Mundo Invertido.",
-    diretor: "The Duffer Brothers",
-    elenco: "Millie Bobby Brown, Finn Wolfhard",
-    ano: "2025/2026",
-    duracao: "2m 10s"
-    
-},
-{
-    titulo: "Wandinha - 2ª Temporada",
-    idVideo: "9vS87_6l0Ac",
-    dataPublicacao: "2026-02-18",
-    categoria: "Série / Netflix",
-    sinopse: "Wandinha Addams retorna à Escola Nunca Mais. Mais mistérios, mais sarcasmo e uma nova ameaça sobrenatural que investiga o passado da família Addams.",
-    diretor: "Tim Burton",
-    elenco: "Jenna Ortega",
-    ano: "2025",
-    duracao: "1m 45s"
-},
-{
-    titulo: "Senhor dos Anéis: Os Anéis de Poder",
-    idVideo: "izM6Y_X_I6Y",
-    dataPublicacao: "2026-02-19",
-    categoria: "Série / Prime Video",
-    sinopse: "A ascensão de Sauron e a criação dos anéis continuam a moldar o destino da Terra Média nesta produção visualmente impecável do Prime Video.",
-    diretor: "J.D. Payne",
-    elenco: "Morfydd Clark, Charlie Vickers",
-    ano: "2024/2025",
-    duracao: "2m 35s"
-},
-{
-    titulo: "The Boys - 5ª Temporada (Final)",
-    idVideo: "F9U-p9Xp-0U",
-    dataPublicacao: "2026-02-19",
-    categoria: "Série / Prime Video",
-    sinopse: "O confronto final entre Billy Bruto e Capitão Pátria. A sátira de super-heróis mais ácida do streaming chega ao seu clímax sangrento e político.",
-    diretor: "Eric Kripke",
-    elenco: "Karl Urban, Antony Starr",
-    ano: "2025/2026",
-    duracao: "2m 20s"
-},
-{
-    titulo: "One Piece (Live Action) - 2ª Temporada",
-    idVideo: "m5N2oY_O6wY", // ID de Teaser de Produção
-    dataPublicacao: "2026-02-19",
-    categoria: "Série / Netflix",
-    sinopse: "Luffy e os Piratas do Chapéu de Palha entram na Grand Line e se preparam para enfrentar a organização Baroque Works em Alabasta.",
-    diretor: "Matt Owens",
-    elenco: "Iñaki Godoy, Emily Rudd",
-    ano: "2025",
-    duracao: "1m 55s"
-},
-{
-    titulo: "Fallout - 2ª Temporada",
-    idVideo: "06O_3A2o6is", // ID Simbólico para teste
-    dataPublicacao: "2026-02-18",
-    categoria: "Série / Prime Video",
-    sinopse: "Lucy e o Ghoul viajam para New Vegas para descobrir os segredos mais profundos da Vault-Tec e o destino da humanidade no deserto pós-apocalíptico.",
-    diretor: "Jonathan Nolan",
-    elenco: "Ella Purnell, Walton Goggins",
-    ano: "2026",
-    duracao: "2m 05s"
-},
-{
-    titulo: "Round 6 - 2ª Temporada",
-    idVideo: "N_S_p8x2mSM",
-    dataPublicacao: "2026-02-18",
-    categoria: "Série / Netflix",
-    sinopse: "Gi-hun retorna para os jogos mortais, mas desta vez com um plano: destruir a organização por trás da competição custe o que custar.",
-    diretor: "Hwang Dong-hyuk",
-    elenco: "Lee Jung-jae",
-    ano: "2025",
-    duracao: "2m 15s"
-}
-    
-];
+        {
+            titulo: "Superman (2025) - Trailer Oficial",
+            idVideo: "qdeLekd6vDg",
+            dataPublicacao: "2026-02-18",
+            categoria: "Ação",
+            sinopse: "O novo início do universo DC nos cinemas. Kal-El busca equilibrar sua herança kryptoniana com sua criação humana como Clark Kent.",
+            ano: "2025"
+        },
+        {
+            titulo: "Mickey 17 - Trailer Legendado",
+            idVideo: "zk9XewcSgDw",
+            dataPublicacao: "2026-02-18",
+            categoria: "Ficção Científica",
+            sinopse: "Um funcionário 'descartável' enviado para colonizar um mundo de gelo morre e é regenerado com as suas memórias.",
+            ano: "2025"
+        },
+        {
+            titulo: "The Last of Us - 2ª Temporada",
+            idVideo: "2MYnGPQyVdg",
+            dataPublicacao: "2026-02-18",
+            categoria: "Série / Drama",
+            sinopse: "Após cinco anos de paz, o passado de Joel e Ellie volta para assombrá-los, desencadeando um novo conflito.",
+            ano: "2025"
+        },
+        {
+            titulo: "Moana 2 - Trailer Oficial",
+            idVideo: "hDZ7y8RP5HE",
+            dataPublicacao: "2026-02-18",
+            categoria: "Animação",
+            sinopse: "Moana e Maui partem numa nova viagem épica juntamente com uma tripulação de marinheiros improváveis.",
+            ano: "2024"
+        },
+        {
+            titulo: "Senhor dos Anéis: Os Anéis de Poder",
+            idVideo: "izM6Y_X_I6Y",
+            dataPublicacao: "2026-02-19",
+            categoria: "Série / Prime Video",
+            sinopse: "A ascensão de Sauron e a criação dos anéis continuam a moldar o destino da Terra Média nesta produção visualmente impecável.",
+            ano: "2024/2025"
+        },
+        {
+            titulo: "The Boys - 5ª Temporada (Final)",
+            idVideo: "F9U-p9Xp-0U",
+            dataPublicacao: "2026-02-19",
+            categoria: "Série / Prime Video",
+            sinopse: "O confronto final entre Billy Bruto e Capitão Pátria. A sátira de super-heróis mais ácida chega ao seu clímax sangrento.",
+            ano: "2025/2026"
+        }
+    ];
 
-    <script>
-// MANTENHA SUA LISTA DE TRAILERS AQUI NO TOPO
-// const trailers = [ ... ]; 
+    let slideAtual = 0;
 
-let slideAtual = 0;
+    function configurarCarrossel() {
+        // Ordena por data
+        trailers.sort((a, b) => new Date(b.dataPublicacao) - new Date(a.dataPublicacao));
 
-// 1. Função para montar o Carrossel
-function configurarCarrossel() {
-    // Ordena: os 3 com as datas mais recentes primeiro
-    trailers.sort((a, b) => {
-        if (!a.dataPublicacao) return 1;
-        if (!b.dataPublicacao) return -1;
-        return new Date(b.dataPublicacao) - new Date(a.dataPublicacao);
-    });
+        const container = document.getElementById('carousel-inner');
+        const destaques = trailers.slice(0, 3);
 
-    const container = document.getElementById('carousel-inner');
-    if (!container) return;
-
-    const destaques = trailers.slice(0, 3); // Pega os 3 primeiros
-
-    container.innerHTML = destaques.map((filme, index) => `
-        <div class="slide ${index === 0 ? 'active' : ''}" 
-             style="background-image: url('https://img.youtube.com/vi/${filme.idVideo}/hqdefault.jpg')">
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <span class="tag" style="background: #e50914; padding: 5px 10px; border-radius: 3px; font-size: 0.8rem; font-weight: bold;">DESTAQUE</span>
-                <h1 style="color: white; font-size: 2.8rem; margin: 15px 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">${filme.titulo}</h1>
-                <p style="color: #eee; margin-bottom: 20px; max-width: 500px;">${filme.sinopse ? filme.sinopse.substring(0, 140) + '...' : ''}</p>
-                <button onclick="ativarVideo('${filme.idVideo}')" 
-                        style="background: #e50914; color: white; border: none; padding: 12px 25px; cursor: pointer; font-weight: bold; border-radius: 4px;">
-                    ▶ ASSISTIR AGORA
-                </button>
+        container.innerHTML = destaques.map((filme, index) => `
+            <div class="slide ${index === 0 ? 'active' : ''}" 
+                 style="background-image: url('https://img.youtube.com/vi/${filme.idVideo}/hqdefault.jpg')">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <span style="background: #e50914; padding: 5px 10px; border-radius: 3px; font-size: 0.8rem; font-weight: bold;">DESTAQUE</span>
+                    <h1>${filme.titulo}</h1>
+                    <p>${filme.sinopse.substring(0, 140)}...</p>
+                    <button onclick="ativarVideo('${filme.idVideo}')" 
+                            style="background: #e50914; color: white; border: none; padding: 12px 25px; cursor: pointer; font-weight: bold; border-radius: 4px;">
+                        ▶ ASSISTIR AGORA
+                    </button>
+                </div>
             </div>
-        </div>
-    `).join('');
+        `).join('');
 
-    // Troca automática a cada 5 segundos
-    setInterval(() => mudarSlide(1), 5000);
-}
+        setInterval(() => mudarSlide(1), 5000);
+    }
 
-// 2. Função para trocar os slides (manual e automático)
-function mudarSlide(direcao) {
-    const slides = document.querySelectorAll('.slide');
-    if (slides.length === 0) return;
-    
-    slides[slideAtual].classList.remove('active');
-    slideAtual = (slideAtual + direcao + slides.length) % slides.length;
-    slides[slideAtual].classList.add('active');
-}
+    function mudarSlide(direcao) {
+        const slides = document.querySelectorAll('.slide');
+        if (slides.length === 0) return;
+        
+        slides[slideAtual].classList.remove('active');
+        slideAtual = (slideAtual + direcao + slides.length) % slides.length;
+        slides[slideAtual].classList.add('active');
+    }
 
-// 3. Sua função de carregar a Grid (Mantenha ou use esta)
-function carregarTrailers() {
-    const grid = document.getElementById('main-grid');
-    if (!grid) return;
-    grid.innerHTML = "";
+    function carregarTrailers() {
+        const grid = document.getElementById('main-grid');
+        grid.innerHTML = "";
 
-    trailers.forEach(filme => {
-        const card = document.createElement('div');
-        card.className = 'video-card';
-        card.innerHTML = `
-            <div class="video-container" onclick="ativarVideo('${filme.idVideo}')" 
-                 style="background-image: url('https://img.youtube.com/vi/${filme.idVideo}/mqdefault.jpg');">
-                <div class="play-button"></div>
-            </div>
-            <div class="content-area">
-                <h3>${filme.titulo}</h3>
-            </div>
-        `;
-        grid.appendChild(card);
-    });
-}
+        trailers.forEach(filme => {
+            const card = document.createElement('div');
+            card.className = 'video-card';
+            card.innerHTML = `
+                <div class="video-container" onclick="ativarVideo('${filme.idVideo}')" 
+                     style="background-image: url('https://img.youtube.com/vi/${filme.idVideo}/mqdefault.jpg');">
+                    <div class="play-button"></div>
+                </div>
+                <div class="content-area">
+                    <h3>${filme.titulo}</h3>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    }
 
-// 4. Sua função de Ativar Vídeo (Importante!)
-function ativarVideo(id) {
-    // Aqui vai o código que você já tem para abrir o modal ou trocar o iframe
-    console.log("Abrindo vídeo: " + id);
-    // Se você usa o código do Modal, ele deve estar aqui.
-}
+    function ativarVideo(id) {
+        // Redireciona para o YouTube ou abre um modal se você tiver o código do modal
+        window.open(`https://www.youtube.com/watch?v=${id}`, '_blank');
+    }
 
-// 5. O gatilho que liga tudo ao abrir a página
-window.onload = () => {
-    configurarCarrossel();
-    carregarTrailers();
-};
-
+    window.onload = () => {
+        configurarCarrossel();
+        carregarTrailers();
+    };
 </script>
+
 </body>
 </html>
-
-

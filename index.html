@@ -71,14 +71,13 @@
         /* Hero Carrossel */
         .hero-carousel {
             width: 100%;
-            /* No Desktop, 70vh pode ser muito alto para algumas imagens. 
-               Se quiser diminuir o corte, pode testar 60vh ou usar pixels fixos */
-            height: 70vh; 
+            /* No Desktop, vamos baixar de 70vh para algo entre 45vh e 55vh */
+            height: 50vh; 
             position: relative;
             overflow: hidden;
             background-color: #000;
         }
-
+        
         .slide {
             position: absolute;
             top: 0; left: 0;
@@ -87,23 +86,18 @@
             transition: opacity 0.8s ease-in-out;
             background-size: cover;
             
-            /* MUDANÇA AQUI: top em vez de center faz o corte acontecer 
-               apenas nos pés/base, preservando os rostos */
-            background-position: top center; 
+            /* Voltamos para o center para manter o equilíbrio agora que o banner é mais baixo */
+            background-position: center; 
             
             display: flex;
             align-items: center;
             z-index: 1;
         }
-
-        /* AJUSTE PARA TELAS PEQUENAS (OPCIONAL) */
-        @media (max-width: 768px) {
-            .hero-carousel {
-                height: 50vh; /* No celular, o carrossel pode ser mais baixo */
-            }
-            .slide {
-                /* No celular, voltar para o centro costuma ficar melhor */
-                background-position: center; 
+        
+        /* Ajuste para o Smartphone continuar do jeito que você gosta */
+            @media (max-width: 768px) {
+        .hero-carousel {
+                height: 70vh; /* Se no celular 70vh estava bom, mantemos aqui */
             }
         }
 
@@ -443,6 +437,7 @@
 </script>
 </body>
 </html>
+
 
 
 

@@ -71,11 +71,10 @@
         /* Hero Carrossel */
         .hero-carousel {
             width: 100%;
-            /* No Desktop, vamos baixar de 70vh para algo entre 45vh e 55vh */
-            height: 50vh; 
+            height: 60vh; /* Altura fixa para manter o padrão no desktop */
             position: relative;
             overflow: hidden;
-            background-color: #000;
+            background-color: #000; /* Fundo preto para as laterais se a imagem for pequena */
         }
         
         .slide {
@@ -84,26 +83,39 @@
             width: 100%; height: 100%;
             opacity: 0;
             transition: opacity 0.8s ease-in-out;
-            background-size: cover;
             
-            /* Voltamos para o center para manter o equilíbrio agora que o banner é mais baixo */
-            background-position: center; 
+            /* MUDANÇA PRINCIPAL: 'contain' mostra a imagem INTEIRA sem zoom.
+               Se preferir que ela preencha tudo, use 'cover', mas o 'contain' é mais seguro aqui */
+            background-size: contain; 
+            background-repeat: no-repeat;
+            background-position: right center; /* Empurra a imagem para a direita para não bater no texto */
             
             display: flex;
             align-items: center;
             z-index: 1;
         }
         
-        /* Ajuste para o Smartphone continuar do jeito que você gosta */
-            @media (max-width: 768px) {
-        .hero-carousel {
-                height: 70vh; /* Se no celular 70vh estava bom, mantemos aqui */
-            }
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            /* Ajustei o gradiente para ser mais forte na esquerda (texto) e sumir na direita (imagem) */
+            background: linear-gradient(90deg, rgba(0,0,0,1) 30%, rgba(0,0,0,0.4) 60%, transparent 100%);
         }
-
+        
         .slide.active {
             opacity: 1;
             z-index: 2;
+        }
+        
+        /* No celular, mantemos o que estava bom */
+        @media (max-width: 768px) {
+            .hero-carousel {
+                height: 70vh;
+            }
+            .slide {
+                background-size: cover;
+                background-position: center;
+            }
         }
 
         .hero-overlay {
@@ -437,6 +449,7 @@
 </script>
 </body>
 </html>
+
 
 
 

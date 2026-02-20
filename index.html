@@ -32,7 +32,8 @@
         /* Header */
         header {
             background: #000;
-            padding: 1rem 2%;
+        /* Reduzi o padding vertical de 1rem para 0.2rem (quase nada) */
+            padding: 0.2rem 2%; 
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -40,9 +41,24 @@
             position: sticky;
             top: 0;
             z-index: 100;
+        /* Altura fixa ajuda a controlar o tamanho da logo */
+            height: 60px; 
         }
 
-        .logo { color: var(--primary); font-size: 1.5rem; font-weight: bold; letter-spacing: 1px; }
+        .logo-container {
+            height: 100%; /* Faz o container da logo ter a altura do header */
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+        /* Faz a imagem ocupar quase toda a altura disponível */
+            height: 50px; 
+            width: auto;
+            display: block;
+        /* Se a imagem ainda tiver bordas internas, esse ajuste ajuda: */
+            object-fit: contain;
+        }
 
         /* Hero Carrossel */
         .hero-carousel {
@@ -402,6 +418,7 @@
 </script>
 </body>
 </html>
+
 
 
 

@@ -34,31 +34,31 @@
             position: sticky;
             top: 0;
             z-index: 100;
-        /* 1. Defina a altura visual que você quer para o cabeçalho */
-            height: 80px; 
-        /* 2. Isso corta o excesso transparente que vai sobrar para fora */
+            /* 1. Altura do header um pouco maior para a logo aparecer bem */
+            height: 90px; 
+            /* 2. Essencial: corta o que sobrar da imagem para fora do header */
             overflow: hidden; 
         }
 
         header a {
             display: flex;
             align-items: center;
-            justify-content: center;
             height: 100%;
         }
-
+        
         .logo-img {
-            /* 3. Forçamos a imagem a ser MUITO maior que o header */
-            height: 250px; 
+            /* 3. Aumentamos a altura para ela crescer, mas sem exagerar */
+            height: 200px; 
             width: auto;
-            
-            /* 4. O scale amplia o desenho central */
-            transform: scale(1.8);
-            
-            /* 5. Margem negativa puxa a logo para cima, compensando o vazio debaixo */
-            margin-top: -10px; 
-            
             display: block;
+        
+            /* 4. Zoom controlado. Se ainda estiver pequena, mude para 1.4 ou 1.5 */
+            transform: scale(1.3);
+        
+            /* 5. Centraliza o desenho. Como a imagem tem vazio, 
+               ajuste esse valor para a logo subir ou descer */
+            margin-top: -5px; 
+        
             object-fit: contain;
         }
 
@@ -426,6 +426,7 @@
 </script>
 </body>
 </html>
+
 
 
 

@@ -26,7 +26,7 @@
         /* Header */
         header {
             background: #000;
-            padding: 0 2%; /* Zero em cima e embaixo */
+            padding: 0 2%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -34,40 +34,38 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            height: 120px; /* Altura fixa para o header */
-            overflow: hidden; /* Corta qualquer sobra da imagem que passe do limite */
+        /* 1. Defina a altura visual que você quer para o cabeçalho */
+            height: 80px; 
+        /* 2. Isso corta o excesso transparente que vai sobrar para fora */
+            overflow: hidden; 
+        }
+
+        header a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
         }
 
         .logo-img {
-        /* Como o vazio está tomando espaço, aumentamos a altura para compensar */
-        /* Se 100px for muito, vá baixando até encaixar */
-            height: 90%; 
+            /* 3. Forçamos a imagem a ser MUITO maior que o header */
+            height: 250px; 
             width: auto;
+            
+            /* 4. O scale amplia o desenho central */
+            transform: scale(1.8);
+            
+            /* 5. Margem negativa puxa a logo para cima, compensando o vazio debaixo */
+            margin-top: -10px; 
+            
             display: block;
-    
-        /* O segredo: centraliza o desenho e ignora o vazio das bordas */
             object-fit: contain;
-    
-        /* Se a logo estiver muito para baixo ou para cima por causa do vazio: */
-            margin-top: -5px; 
-    
-        /* Isso faz o desenho "crescer" dentro da caixa sem mexer no header */
-            transform: scale(1.4); 
         }
 
         .logo-container {
             height: 100%; /* Faz o container da logo ter a altura do header */
             display: flex;
             align-items: center;
-        }
-
-        .logo-img {
-        /* Faz a imagem ocupar quase toda a altura disponível */
-            height: 50px; 
-            width: auto;
-            display: block;
-        /* Se a imagem ainda tiver bordas internas, esse ajuste ajuda: */
-            object-fit: contain;
         }
 
         /* Hero Carrossel */
@@ -428,6 +426,7 @@
 </script>
 </body>
 </html>
+
 
 
 

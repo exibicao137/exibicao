@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-B7W3XF7PBZ"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-    
       gtag('config', 'G-B7W3XF7PBZ');
     </script>
     
@@ -16,236 +13,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exibição | Trailers e Lançamentos</title>
     <link rel="icon" type="image/png" href="favicon.png">
-    <style>
-        :root {
-            --primary: #e50914;
-            --bg: #111;
-            --card-bg: #1f1f1f;
-            --text: #ffffff;
-            --text-dim: #b3b3b3;
-        }
-
-        body {
-            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            margin: 0;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Header */
-        header {
-            background: #000;
-            padding: 0 2%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid var(--primary);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            /* 1. Altura do header um pouco maior para a logo aparecer bem */
-            height: 90px; 
-            /* 2. Essencial: corta o que sobrar da imagem para fora do header */
-            overflow: hidden; 
-        }
-
-        header a {
-            display: flex;
-            align-items: center;
-            height: 100%;
-        }
-        
-        .logo-img {
-            /* 3. Aumentamos a altura para ela crescer, mas sem exagerar */
-            height: 100px; 
-            width: auto;
-            display: block;
-        
-            /* 4. Zoom controlado. Se ainda estiver pequena, mude para 1.4 ou 1.5 */
-            transform: scale(1.3);
-        
-            /* 5. Centraliza o desenho. Como a imagem tem vazio, 
-               ajuste esse valor para a logo subir ou descer */
-            margin-top: -5px; 
-        
-            object-fit: contain;
-        }
-
-        .logo-container {
-            height: 100%; /* Faz o container da logo ter a altura do header */
-            display: flex;
-            align-items: center;
-        }
-
-        /* Hero Carrossel */
-        .hero-carousel {
-            width: 100%;
-            height: 60vh; /* Altura fixa para manter o padrão no desktop */
-            position: relative;
-            overflow: hidden;
-            background-color: #000; /* Fundo preto para as laterais se a imagem for pequena */
-        }
-        
-        .slide {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            opacity: 0;
-            transition: opacity 0.8s ease-in-out;
-            
-            /* MUDANÇA PRINCIPAL: 'contain' mostra a imagem INTEIRA sem zoom.
-               Se preferir que ela preencha tudo, use 'cover', mas o 'contain' é mais seguro aqui */
-            background-size: contain; 
-            background-repeat: no-repeat;
-            background-position: right center; /* Empurra a imagem para a direita para não bater no texto */
-            
-            display: flex;
-            align-items: center;
-            z-index: 1;
-        }
-        
-        .hero-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            /* Ajustei o gradiente para ser mais forte na esquerda (texto) e sumir na direita (imagem) */
-            background: linear-gradient(90deg, rgba(0,0,0,1) 30%, rgba(0,0,0,0.4) 60%, transparent 100%);
-        }
-        
-        .slide.active {
-            opacity: 1;
-            z-index: 2;
-        }
-        
-        /* No celular, mantemos o que estava bom */
-        @media (max-width: 768px) {
-            .hero-carousel {
-                height: 70vh;
-            }
-            .slide {
-                background-size: cover;
-                background-position: center;
-            }
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(90deg, rgba(0,0,0,0.9) 10%, transparent 100%);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 3;
-            padding: 0 5%;
-            color: white;
-            max-width: 700px;
-        }
-
-        .hero-content h1 { font-size: 3.5rem; margin: 10px 0; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
-        .hero-content p { font-size: 1.2rem; color: #ddd; margin-bottom: 25px; }
-
-        .carousel-controls {
-            position: absolute;
-            bottom: 30px;
-            right: 5%;
-            z-index: 10;
-        }
-
-        .carousel-controls button {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid white;
-            color: white;
-            padding: 12px 18px;
-            cursor: pointer;
-            border-radius: 50%;
-            margin-left: 10px;
-            transition: 0.3s;
-        }
-
-        .carousel-controls button:hover { background: var(--primary); border-color: var(--primary); }
-
-        /* Grid de Vídeos */
-        .container { padding: 3rem 5%; max-width: 1400px; margin: auto; }
-        
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .video-card {
-            background: var(--card-bg);
-            border-radius: 8px;
-            overflow: hidden;
-            transition: transform 0.3s;
-            cursor: pointer;
-        }
-
-        .video-card:hover { transform: scale(1.03); }
-
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .play-button {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 50px; height: 50px;
-            background: rgba(229, 9, 20, 0.9);
-            border-radius: 50%;
-        }
-
-        .play-button::after {
-            content: "";
-            border-style: solid;
-            border-width: 10px 0 10px 15px;
-            border-color: transparent transparent transparent white;
-            position: absolute;
-            top: 15px; left: 20px;
-        }
-
-        .content-area { padding: 15px; }
-        .content-area h3 { margin: 0; font-size: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
-        /* Modal */
-        #videoModal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95);
-            z-index: 10000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Footer */
-        footer { padding: 40px; background: #000; text-align: center; color: #666; font-size: 0.9rem; }
-        footer a { color: #666; text-decoration: none; margin: 0 10px; }
-        footer a:hover { color: var(--primary); }
-    </style>
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
-    <a href="index.html" style="text-decoration: none;">
-        <img src="logo.png" alt="EXIBIÇÃO" class="logo-img">
-    </a>
-    </header>
+    <div class="logo-container">
+        <a href="index.html">
+            <img src="logo.png" alt="EXIBIÇÃO" class="logo-img">
+        </a>
+    </div>
+    
+    <nav class="menu-abas">
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="explorar.html">Explorar</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="contato.html">Contato</a></li>
+        </ul>
+    </nav>
+</header>
 
 <div class="hero-carousel">
     <div id="carousel-inner"></div>
     <div class="carousel-controls">
-        <button onclick="mudarSlide(-1)">❮</button>
-        <button onclick="mudarSlide(1)">❯</button>
-    </div>
+        </div>
 </div>
 
 <div class="container">
@@ -262,167 +55,35 @@
 
 <footer>
     <p>&copy; 2026 Exibição - Todos os direitos reservados.</p>
-    <div>
-        <a href="privacidade.html">Privacidade</a> | 
-        <a href="termos.html">Termos de Uso</a> |
-        <a href="sobre.html">Sobre</a> | 
-        <a href="contato.html">Contato</a>
+    <div class="footer-links">
+        <a href="privacidade.html">Privacidade</a>
+        <span>|</span>
+        <a href="termos.html">Termos de Uso</a>
     </div>
 </footer>
 
 <script>
-    // LISTA DE VÍDEOS
+    // AQUI VOCÊ MANTÉM A SUA LISTA DE TRAILERS IGUAL ESTAVA
     const trailers = [
-
-    {
-        titulo: "Pânico 7 | Paramount Pictures Brasil",
-        idVideo: "Eqcv6iNuE9I", 
-        dataPublicacao: "2026-02-24",
-        sinopse: "Cada facada nos trouxe até aqui. 🔪 Assista ao trailer final de #Pânico7 e se prepare para gritar nos cinemas em 26 de fevereiro!"
-    },        
-    {
-        titulo: "Máquina de Guerra | Netflix",
-        idVideo: "mBenb7O8Hnc", 
-        dataPublicacao: "2026-02-23",
-        sinopse: "Na última etapa da seleção para os Rangers do exército americano, um treinamento de uma tropa de elite se transforma em uma verdadeira luta pela sobrevivência contra uma ameaça inimaginável."
-    },    
-    {
-        titulo: "O Mandaloriano e Grogu | Dublado",
-        idVideo: "VM4svpk07UU", 
-        dataPublicacao: "2026-02-20",
-        sinopse: "Juntos como deve ser. O filme chega aos cinemas em 21 de maio e em IMAX."
-    },   
-    {
-        titulo: "Peaky Blinders: O Homem Imortal",
-        idVideo: "P_-r11fcDTc", 
-        dataPublicacao: "2026-02-20",
-        sinopse: "Tommy Shelby nunca esteve destinado a ser um simples mortal. Peaky Blinders: O Homem Imortal estreia em 20 de março de 2026 na Netflix."
-    },        
-    {
-        titulo: "Toy Story 5 | Dublado",
-        idVideo: "-YbiBclEEgo", 
-        dataPublicacao: "2026-02-20",
-        sinopse: "Os tempos mudam, mas os amigos são para sempre."
-    },
-        
-    {
-        titulo: "Gladiador II",
-        idVideo: "Gvu6ktSUln0", 
-        dataPublicacao: "2024-11-14",
-        sinopse: "Anos após presenciar a morte de Maximus, Lucius é forçado a entrar no Coliseu para lutar pelo futuro de Roma."
-    },
-    {
-        titulo: "Duna: A Profecia",
-        idVideo: "HnmodGQbp1U",
-        dataPublicacao: "2024-11-17",
-        sinopse: "Situada 10.000 anos antes de Paul Atreides, a série segue as irmãs Harkonnen enquanto combatem forças que ameaçam o futuro da humanidade."
-    },
-    {
-        titulo: "Wicked",
-        idVideo: "6COmYeLsz4c",
-        dataPublicacao: "2024-11-21",
-        sinopse: "A história não contada das bruxas de Oz, focada na improvável amizade entre Elphaba e Glinda."
-    },
-    {
-        titulo: "Moana 2",
-        idVideo: "hDZ7y8RP5HE",
-        dataPublicacao: "2024-11-27",
-        sinopse: "Moana e Maui reúnem-se para uma nova e vasta viagem ao lado de uma tripulação de marinheiros improváveis."
-    },
-    {
-        titulo: "Senhor dos Anéis: A Guerra dos Rohirrim",
-        idVideo: "ngcN9XogD8c",
-        dataPublicacao: "2024-12-12",
-        sinopse: "Um filme de animação que explora a história não contada por trás do Abismo de Helm, centenas de anos antes da trilogia original."
-    },
-    {
-        titulo: "Sonic 3: O Filme",
-        idVideo: "xjbxG5VEo4M",
-        dataPublicacao: "2024-12-25",
-        sinopse: "Sonic, Knuckles e Tails reúnem-se para enfrentar um novo e poderoso adversário: Shadow, o Ouriço."
-    },
-    {
-        titulo: "Round 6 - 2ª Temporada",
-        idVideo: "CmRR-0XAttY",
-        dataPublicacao: "2024-12-26",
-        sinopse: "Três anos após vencer o Jogo do Lula, o Jogador 456 desiste de ir para os EUA e volta com um novo objetivo."
-    },
-    {
-        titulo: "Mickey 17",
-        idVideo: "zk9XewcSgDw",
-        dataPublicacao: "2025-01-31",
-        sinopse: "Um funcionário descartável numa expedição humana enviada para colonizar o mundo gelado de Niflheim recusa-se a deixar que o seu substituto o substitua."
-    },
-    {
-        titulo: "Demolidor: Renascido",
-        idVideo: "9KZyUQpihsE",
-        dataPublicacao: "2025-03-04",
-        sinopse: "Matt Murdock e Wilson Fisk tentam deixar as suas rivalidades de lado para ajudar o povo de Nova Iorque, mas o passado volta para assombrar."
-    },
-    {
-        titulo: "Mortal Kombat 2",
-        idVideo: "0HnnNgHqo7I", 
-        dataPublicacao: "2026-02-25",
-        sinopse: "Assista ao novo trailer de #MortalKombat2 - 7 de maio nos cinemas!"
-    },
-    {
-        titulo: "Superman",
-        idVideo: "qdeLekd6vDg",
-        dataPublicacao: "2025-07-11",
-        sinopse: "O filme explora a jornada de Superman para reconciliar a sua herança kryptoniana com a sua criação humana em Smallville."
-    },
-    {
-        titulo: "The Boys - 5ª Temporada",
-        idVideo: "XzbWryxxn0c",
-        dataPublicacao: "2025-08-15",
-        sinopse: "A temporada final da batalha sangrenta entre os Rapazes e os Sete de Capitão Pátria."
-    },
-    {
-        titulo: "The Last of Us - 2ª Temporada",
-        idVideo: "2MYnGPQyVdg",
-        dataPublicacao: "2025-09-01",
-        sinopse: "Cinco anos após a sua perigosa jornada através dos Estados Unidos pós-pandémicos, Ellie e Joel vivem em Jackson."
-    },
-    {
-        titulo: "Stranger Things 5",
-        idVideo: "Wb3kaP580kA",
-        dataPublicacao: "2025-10-30",
-        sinopse: "A batalha final por Hawkins e pelo Mundo Invertido chega à sua conclusão épica."
-    },
-    {
-        titulo: "Fallout - 2ª Temporada",
-        idVideo: "2QGZ_56-8Eg",
-        dataPublicacao: "2026-02-15",
-        sinopse: "Lucy e o Ghoul viajam para as luzes brilhantes de New Vegas no próximo capítulo da sobrevivência na Wasteland."
-    }
-];
+        {
+            titulo: "Pânico 7 | Paramount Pictures Brasil",
+            idVideo: "Eqcv6iNuE9I", 
+            dataPublicacao: "2026-02-24",
+            sinopse: "Cada facada nos trouxe até aqui. 🔪 Assista ao trailer final de #Pânico7 e se prepare para gritar nos cinemas em 26 de fevereiro!"
+        },
+        // ... adicione os outros aqui ...
+    ];
 
     let slideAtual = 0;
 
-    // 1. FUNÇÃO PARA ABRIR O VÍDEO (AGORA GLOBAL)
     window.ativarVideo = function(id) {
-        console.log("Tentando abrir o vídeo ID: " + id);
         const modal = document.getElementById('videoModal');
         const player = document.getElementById('videoPlayer');
-        
-        if (modal && player) {
-            player.innerHTML = `
-                <div style="position: relative; padding-bottom: 56.25%; height: 0;">
-                    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
-                        src="https://www.youtube.com/embed/${id}?autoplay=1" 
-                        frameborder="0" 
-                        allow="autoplay; encrypted-media; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                </div>`;
-            modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        } else {
-            alert("Erro ao carregar o player de vídeo.");
-        }
+        player.innerHTML = `<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/${id}?autoplay=1" frameborder="0" allowfullscreen></iframe></div>`;
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
     };
 
-    // 2. FUNÇÃO PARA FECHAR
     window.fecharVideo = function() {
         document.getElementById('videoModal').style.display = 'none';
         document.getElementById('videoPlayer').innerHTML = "";
@@ -440,22 +101,14 @@
     function configurarCarrossel() {
         trailers.sort((a, b) => new Date(b.dataPublicacao) - new Date(a.dataPublicacao));
         const container = document.getElementById('carousel-inner');
-        if (!container) return;
-        
         const destaques = trailers.slice(0, 3);
-
         container.innerHTML = destaques.map((filme, index) => `
-            <div class="slide ${index === 0 ? 'active' : ''}" 
-                 style="background-image: url('https://img.youtube.com/vi/${filme.idVideo}/hqdefault.jpg')">
+            <div class="slide ${index === 0 ? 'active' : ''}" style="background-image: url('https://img.youtube.com/vi/${filme.idVideo}/maxresdefault.jpg')">
                 <div class="hero-overlay"></div>
                 <div class="hero-content">
-                    <span style="background: var(--primary); padding: 4px 8px; border-radius: 3px; font-weight: bold; font-size: 0.8rem;">DESTAQUE</span>
                     <h1>${filme.titulo}</h1>
                     <p>${filme.sinopse.substring(0, 150)}...</p>
-                    <button onclick="ativarVideo('${filme.idVideo}')" 
-                            style="background: var(--primary); color: white; border: none; padding: 12px 25px; cursor: pointer; font-weight: bold; border-radius: 4px;">
-                        ▶ ASSISTIR AGORA
-                    </button>
+                    <button onclick="ativarVideo('${filme.idVideo}')" style="background: var(--primary); color: white; border: none; padding: 12px 25px; cursor: pointer; font-weight: bold; border-radius: 4px;">▶ ASSISTIR AGORA</button>
                 </div>
             </div>
         `).join('');
@@ -463,29 +116,18 @@
     }
 
     function carregarTrailers() {
-    const grid = document.getElementById('main-grid');
-    if (!grid) return;
-    grid.innerHTML = "";
-    
-    trailers.forEach(filme => {
-        const card = document.createElement('div');
-        card.className = 'video-card';
-        card.onclick = function() { ativarVideo(filme.idVideo); };
-        
-        card.innerHTML = `
-            <div class="video-container" style="background-image: url('https://img.youtube.com/vi/${filme.idVideo}/mqdefault.jpg');">
-                <div class="play-button"></div>
-            </div>
-            <div class="content-area">
-                <h3>${filme.titulo}</h3>
-                <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 8px; line-height: 1.3;">
-                    ${filme.sinopse ? filme.sinopse.substring(0, 80) + '...' : ''}
-                </p>
-            </div>
-        `;
-        grid.appendChild(card);
-    });
-}
+        const grid = document.getElementById('main-grid');
+        trailers.forEach(filme => {
+            const card = document.createElement('div');
+            card.className = 'video-card';
+            card.onclick = () => ativarVideo(filme.idVideo);
+            card.innerHTML = `
+                <div class="video-container" style="background-image: url('https://img.youtube.com/vi/${filme.idVideo}/mqdefault.jpg');"></div>
+                <div style="padding: 15px;"><h3>${filme.titulo}</h3></div>
+            `;
+            grid.appendChild(card);
+        });
+    }
 
     window.onload = () => {
         configurarCarrossel();
@@ -494,34 +136,3 @@
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

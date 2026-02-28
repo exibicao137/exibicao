@@ -1,0 +1,198 @@
+:root {
+    --primary: #e50914;
+    --bg: #111;
+    --card-bg: #1f1f1f;
+    --text: #ffffff;
+    --text-dim: #b3b3b3;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    margin: 0;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* HEADER CONFIGURADO */
+/* HEADER - AJUSTE DE ALTURA */
+header {
+    background: #000;
+    padding: 0 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--primary);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 90px; /* Altura fixa do header */
+}
+
+.logo-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    overflow: visible; /* Permite que o brilho do logo apareça se necessário */
+}
+
+.logo-img {
+    /* Ajustamos a altura para que ele ocupe bem o espaço sem vazar */
+    height: 75px; 
+    width: auto;
+    display: block;
+    
+    /* Removemos o scale(1.5) fixo que estava fazendo vazar */
+    transform: scale(1); 
+    transition: transform 0.3s ease, filter 0.3s ease;
+    
+    /* O brilho que dá o destaque premium */
+    filter: drop-shadow(0 0 5px rgba(229, 9, 20, 0.2));
+}
+
+/* EFEITO AO PASSAR O MOUSE (HOVER) */
+.logo-img:hover {
+    /* Agora ele cresce levemente em vez de encolher */
+    transform: scale(1.05); 
+    filter: drop-shadow(0 0 12px rgba(229, 9, 20, 0.6));
+}
+
+/* MENU DE ABAS */
+.menu-abas ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-abas a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 13px;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.menu-abas a:hover {
+    color: var(--primary);
+}
+
+/* HERO CARROSSEL */
+.hero-carousel {
+    width: 100%;
+    height: 65vh;
+    position: relative;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.slide {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+}
+
+.slide.active { opacity: 1; z-index: 2; }
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(90deg, rgba(0,0,0,0.9) 30%, transparent 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    padding: 0 5%;
+    max-width: 700px;
+}
+
+.hero-content h1 { font-size: 3rem; margin: 10px 0; }
+
+/* GRID DE VÍDEOS */
+.container { padding: 3rem 5%; max-width: 1400px; margin: auto; }
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.video-card {
+    background: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.video-card:hover { transform: scale(1.03); }
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    background-size: cover;
+}
+
+/* MODAL */
+#videoModal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.95);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+}
+
+/* RODAPÉ - RECUPERANDO O ESPAÇAMENTO E ALINHAMENTO */
+/* RODAPÉ CENTRALIZADO E LIMPO */
+footer {
+    padding: 60px 5%; 
+    background: #000;
+    text-align: center; /* Centraliza todo o conteúdo */
+    color: #666;
+    font-size: 0.85rem;
+    border-top: 1px solid #1a1a1a;
+    margin-top: 50px;
+}
+
+footer p {
+    margin-bottom: 20px;
+    display: block;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center; /* Centraliza os links horizontalmente */
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: #666;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--primary);
+}
+
+/* Divisor visual entre os links */
+.footer-links span {
+    color: #333;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+    header {

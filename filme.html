@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistir | Exibição</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos específicos para a página de exibição */
+        .container-filme {
+            padding: 120px 5% 60px;
+            max-width: 1100px;
+            margin: auto;
+            min-height: 100vh;
+        }
+
+        .voltar-link {
+            display: inline-block;
+            color: var(--text-dim);
+            text-decoration: none;
+            margin-bottom: 25px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .voltar-link:hover {
+            color: var(--primary);
+        }
+
+        /* Moldura do Player estilo Cinema */
+        .player-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* Proporção 16:9 */
+            height: 0;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            border: 1px solid #333;
+        }
+
+        .player-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Área de Informações */
+        .detalhes-filme {
+            margin-top: 40px;
+        }
+
+        .detalhes-filme h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            color: var(--branco);
+        }
+
+        .meta-info {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .categoria-badge {
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .sinopse-texto {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            max-width: 800px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .detalhes-filme h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-container">
+        <a href="index.html">
+            <img src="logo.png" alt="EXIBIÇÃO" class="logo-img">
+        </a>
+    </div>
+    <nav class="menu-abas">
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="explorar.html">Explorar</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="container-filme">
+    <a href="explorar.html" class="voltar-link">← Voltar ao Catálogo</a>
+
+    <div class="player-wrapper" id="video-display">
+        </div>
+
+    <div class="detalhes-filme">
+        <div class="meta-info">
+            <span id="filme-categoria" class="categoria-badge">Gênero</span>
+        </div>
+        <h1 id="filme-titulo">Carregando título...</h1>
+        <p id="filme-sinopse" class="sinopse-texto">Buscando informações do filme...</p>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2026 Exibição - Todos os direitos reservados.</p>
+</footer>
+
+<script src="dados.js"></script>
+
+<script>
+    // 1. Captura o ID que vem na URL (ex: ?id=Eqcv6iNuE9I)
+    const urlParams = new URLSearchParams(window.location.search);
+    const videoId = urlParams.get('id');
+
+    // 2. Busca o filme no nosso "banco de dados" (dados.js)
+    const filme = trailers.find(t => t.idVideo === videoId);
+
+    // 3. Se encontrar o filme, preenche a página
+    if (filme) {
+        document.title = `${filme.titulo} | Exibição`;
+        document.getElementById('filme-titulo').innerText = filme.titulo;
+        document.getElementById('filme-categoria').innerText = filme.categoria;
+        
+        // Se você não tiver colocado sinopse no dados.js, ele usa uma padrão
+        document.getElementById('filme-sinopse').innerText = filme.sinopse || "Sinopse não disponível para este trailer.";
+
+        // Injeta o player do YouTube
+        document.getElementById('video-display').innerHTML = `
+            <iframe 
+                src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        `;
+    } else {
+        // Se o filme não existir (ID errado), volta para o catálogo
+        window.location.href = 'explorar.html';
+    }
+</script>
+
+</body>
+</html>

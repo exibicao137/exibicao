@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorar Catálogo | Exibição</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo-container">
+        <a href="index.html">
+            <img src="logo.png" alt="EXIBIÇÃO" class="logo-img">
+        </a>
+    </div>
+    <nav class="menu-abas">
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="explorar.html" class="active">Explorar</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="contato.html">Contato</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="container-explorar">
+    <section class="secao-titulo">
+        <h1>Explorar Tudo</h1>
+        <div class="categorias-tags">
+            <span class="tag active" onclick="filtrar('Todos', this)">Todos</span>
+            <span class="tag" onclick="filtrar('Ação', this)">Ação</span>
+            <span class="tag" onclick="filtrar('Terror', this)">Terror</span>
+            <span class="tag" onclick="filtrar('Sci-Fi', this)">Sci-Fi</span>
+            <span class="tag" onclick="filtrar('Drama', this)">Drama</span>
+            <span class="tag" onclick="filtrar('Animação', this)">Animação</span>
+        </div>
+    </section>
+
+    <div class="movie-grid-thumbs" id="explorar-grid"></div>
+</main>
+
+<footer>
+    <p>&copy; 2026 Exibição - Todos os direitos reservados.</p>
+    <div class="footer-links">
+        <a href="privacidade.html">Privacidade</a>
+        <span>|</span>
+        <a href="termos.html">Termos de Uso</a>
+    </div>
+</footer>
+
+<script src="dados.js"></script>
+
+<script>
+    window.irParaFilme = function(id) {
+        window.location.href = `filme.html?id=${id}`;
+    };
+
+    function carregarCatalogo(categoriaFiltro = "Todos") {
+        const grid = document.getElementById('explorar-grid');
+        grid.innerHTML = ""; 
+        
+        // Ele já reconhece o "trailers" que vem do dados.js
+        const listaFiltrada = categoriaFiltro === "Todos" 
+            ? trailers 
+            : trailers.filter(t => t.categoria === categoriaFiltro);
+
+        listaFiltrada.forEach(filme => {
+            const card = document.createElement('div');
+            card.className = 'movie-thumb-card';
+            card.onclick = () => irParaFilme(filme.idVideo);
+            card.innerHTML = `
+                <img src="https://img.youtube.com/vi/${filme.idVideo}/hqdefault.jpg" alt="${filme.titulo}">
+                <div class="thumb-overlay">
+                    <h3>${filme.titulo}</h3>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    window.filtrar = function(categoria, elemento) {
+        document.querySelectorAll('.tag').forEach(tag => tag.classList.remove('active'));
+        elemento.classList.add('active');
+        carregarCatalogo(categoria);
+    }
+
+    window.onload = () => carregarCatalogo();
+</script>
+
+</body>
+</html>

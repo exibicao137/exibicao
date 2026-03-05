@@ -30,27 +30,30 @@ body {
    ========================================= */
 header {
     background: var(--preto);
-    padding: 0 5%;
+    padding: 0 4%; /* Reduzi levemente o padding lateral para dar amplitude */
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 2px solid var(--primary);
-    position: fixed; /* Mudei para fixed para garantir que fique sempre no topo */
+    position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    height: 90px;
+    height: 95px; /* Aumentamos apenas 5px na altura total */
 }
 
 .logo-img {
-    height: 65px; 
+    height: 85px; /* Aumentamos de 65px para 85px - ela vai preencher quase todo o header */
     width: auto;
+    display: block;
     transition: transform 0.3s ease, filter 0.3s ease;
     filter: drop-shadow(0 0 5px rgba(229, 9, 20, 0.2));
+    /* Esse ajuste abaixo garante que ela não tenha margens internas invisíveis */
+    margin: 0; 
 }
 
 .logo-img:hover {
-    transform: scale(1.05);
+    transform: scale(1.08); /* Um zoom mais elegante */
     filter: drop-shadow(0 0 12px rgba(229, 9, 20, 0.6));
 }
 
@@ -83,47 +86,57 @@ header {
    ========================================= */
 #hero-banner {
     width: 100%;
-    height: 80vh;
+    min-height: 85vh; /* Ocupa 85% da altura da tela no PC */
     position: relative;
     background-color: var(--preto);
+    display: flex;
+    align-items: center; /* Centraliza o conteúdo verticalmente */
+    overflow: hidden;
 }
 
 .slide {
     width: 100%;
-    height: 100%;
+    min-height: 85vh;
     background-size: cover;
     background-position: center;
     display: flex;
-    align-items: center;
+    align-items: center; 
+    padding: 0 5%;
+    position: relative;
 }
 
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, rgba(0,0,0,0.9) 20%, transparent 100%),
-                linear-gradient(0deg, var(--bg) 0%, transparent 50%);
+    /* Gradiente lateral para legibilidade e inferior para mesclar com o site */
+    background: linear-gradient(90deg, rgba(0,0,0,0.8) 10%, transparent 100%),
+                linear-gradient(0deg, var(--bg) 0%, transparent 40%);
+    z-index: 1;
 }
 
 .hero-content {
-    padding-top: 220px !important; /* Aumentamos para não bater na logo */
-    padding-bottom: 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    max-width: 800px;
     position: relative;
     z-index: 10;
+    /* Retiramos o padding de 220px. O Flexbox do pai já centraliza o texto. */
+    padding-top: 60px; 
 }
 
 .hero-content h1 {
-    font-size: clamp(1.8rem, 6vw, 3.5rem);
+    /* Fonte fluida: Cresce no PC e diminui no Celular sozinha */
+    font-size: clamp(2rem, 5vw, 4rem); 
+    line-height: 1.1;
     margin-bottom: 15px;
     text-transform: uppercase;
+    font-weight: 800;
+    color: var(--branco);
 }
 
 .hero-content p {
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 1.2vw, 1.2rem);
     color: var(--text-dim);
     margin-bottom: 25px;
+    max-width: 600px;
 }
 
 .banner-acoes {
@@ -158,6 +171,31 @@ header {
 
 .btn-info:hover {
     background-color: rgba(109, 109, 110, 0.4);
+}
+
+/* --- AJUSTE ESPECÍFICO PARA CELULAR --- */
+@media screen and (max-width: 768px) {
+    #hero-banner, .slide {
+        min-height: 75vh; /* Banner um pouco menor no mobile */
+    }
+
+    .hero-content {
+        padding-top: 100px; /* Garante que o texto não suba na logo fixa */
+        text-align: left;
+    }
+
+    .hero-content h1 {
+        font-size: 1.8rem; /* Tamanho confortável para telas pequenas */
+    }
+    
+    .hero-content p {
+        font-size: 0.95rem;
+        /* Limita a sinopse no mobile para não ocupar a tela toda */
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
 }
 
 /* =========================================

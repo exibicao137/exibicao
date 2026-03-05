@@ -105,14 +105,17 @@ header {
 }
 
 .hero-content {
+    padding-top: 220px !important; /* Aumentamos para não bater na logo */
+    padding-bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     position: relative;
-    z-index: 3;
-    padding: 0 5%;
-    max-width: 800px;
+    z-index: 10;
 }
 
 .hero-content h1 {
-    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-size: clamp(1.8rem, 6vw, 3.5rem);
     margin-bottom: 15px;
     text-transform: uppercase;
 }

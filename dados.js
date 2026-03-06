@@ -4,7 +4,7 @@ const trailers = [
         idVideo: "PXXPpFCxnkQ", 
         categoria: "Thriller",
         dataPublicacao: "2026-03-05",
-        sinopse: "Em um mundo onde super-heróis são celebridades mimadas, influenciadores digitais e ativos corporativos da poderosa Vought International, o heroísmo é apenas uma fachada para o abuso de poder e a corrupção. Quando uma tragédia pessoal atinge Billy Butcher, ele recruta Hughie Campbell e um grupo de operários vigilantes — conhecidos apenas como The Boys — para uma missão suicida: derrubar "Os Sete", a equipe de heróis mais elite e perigosa do planeta, liderada pelo instável e onipotente Capitão Pátria (Homelander). Sem poderes, mas com muita raiva e táticas sujas, eles provarão que você não precisa de capas para enfrentar deuses."
+        sinopse: "Em um mundo onde super-heróis são celebridades mimadas, influenciadores digitais e ativos corporativos da poderosa Vought International, o heroísmo é apenas uma fachada para o abuso de poder e a corrupção. Quando uma tragédia pessoal atinge Billy Butcher, ele recruta Hughie Campbell e um grupo de operários vigilantes — conhecidos apenas como The Boys — para uma missão suicida: derrubar Os Sete, a equipe de heróis mais elite e perigosa do planeta, liderada pelo instável e onipotente Capitão Pátria (Homelander). Sem poderes, mas com muita raiva e táticas sujas, eles provarão que você não precisa de capas para enfrentar deuses."
     },  
     {
         titulo: "LANTERNAS - Trailer Dublado Oficial (2026)",

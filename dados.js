@@ -1,5 +1,18 @@
 const trailers = [
-    
+    {
+        titulo: "The Boys – Temporada Final Trailer",
+        idVideo: "PXXPpFCxnkQ", 
+        categoria: "Thriller",
+        dataPublicacao: "2026-03-05",
+        sinopse: "Em um mundo onde super-heróis são celebridades mimadas, influenciadores digitais e ativos corporativos da poderosa Vought International, o heroísmo é apenas uma fachada para o abuso de poder e a corrupção. Quando uma tragédia pessoal atinge Billy Butcher, ele recruta Hughie Campbell e um grupo de operários vigilantes — conhecidos apenas como The Boys — para uma missão suicida: derrubar "Os Sete", a equipe de heróis mais elite e perigosa do planeta, liderada pelo instável e onipotente Capitão Pátria (Homelander). Sem poderes, mas com muita raiva e táticas sujas, eles provarão que você não precisa de capas para enfrentar deuses."
+    },  
+    {
+        titulo: "LANTERNAS - Trailer Dublado Oficial (2026)",
+        idVideo: "Mrty4Lji7Kk", 
+        categoria: "Sci-Fi",
+        dataPublicacao: "2026-03-05",
+        sinopse: "Lanternas mergulha em um mistério visceral e sombrio no coração da América. O lendário e experiente Hal Jordan é forçado a mentorar o jovem e determinado recruta John Stewart quando um assassinato brutal ocorre em uma pequena cidade terrestre. O que começa como uma investigação policial de rotina logo revela uma conspiração intergaláctica muito mais perigosa, conectando um segredo antigo da Tropa dos Lanternas Verdes a uma ameaça que pode consumir todo o setor. Em um jogo de luz e sombras, os dois policiais espaciais precisarão superar suas diferenças para confrontar um mal que a galáxia tentou esquecer."
+    },    
     {
         titulo: "Todo Mundo em Pânico",
         idVideo: "AZOHdslhqEc", 

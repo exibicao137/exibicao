@@ -3,7 +3,7 @@ const trailers = [
     {
         titulo: "Todo Mundo em Pânico",
         idVideo: "AZOHdslhqEc", 
-        categoria: "Comédia""Terror",
+        categoria: "Comédia",
         dataPublicacao: "2026-03-03",
         sinopse: "Vinte anos depois dos crimes originais, a gangue está de volta para enfrentar um novo tipo de pesadelo: o terror pós-moderno. Quando Cindy Campbell descobre que sua casa é assombrada por um urso de pelúcia assassino (Imagine), uma freira com problemas de visão (A Freira) e uma boneca de IA que não para de dançar (M3GAN), ela precisa reunir seus amigos sobreviventes para uma última batalha. Prepare-se para ritos hereditários estranhos, sorrisos macabros que não saem do rosto e, claro, muita gente correndo na direção errada. O medo mudou, mas a burrice continua a mesma!"
     },

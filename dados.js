@@ -1,11 +1,5 @@
 const trailers = [
-    {
-        titulo: "Super Mario Galaxy - O Filme",
-        idVideo: "BDyTQmUd_aw", 
-        categoria: "Animação",
-        dataPublicacao: "2026-03-10",
-        sinopse: "Após salvarem o Reino Cogumelo das garras de Bowser, Mario e Luigi agora são heróis estabelecidos. No entanto, a paz é interrompida quando um estranho fenômeno começa a fundir diferentes realidades do universo através de portais misteriosos. Para impedir o colapso de todos os reinos, os irmãos Mario precisam se unir à Princesa Peach e viajar para além das fronteiras conhecidas, chegando à vibrante Sarasaland e às profundezas das galáxias. Com novos poderes e aliados inesperados, eles descobrirão que o universo é muito maior do que imaginavam — e que uma ameaça antiga, muito mais astuta que Bowser, está movendo as peças no escuro."
-    },
+    
     {
         titulo: "The Boys – Temporada Final Trailer",
         idVideo: "PXXPpFCxnkQ", 

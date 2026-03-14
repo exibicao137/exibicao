@@ -1,6 +1,12 @@
 const trailers = [
-
-{
+    {   
+        titulo: "Algo Horrível Vai Acontecer",
+        idVideo: "ia75aXrtra8", 
+        categoria: "Terror",
+        dataPublicacao: "2026-03-13",
+        sinopse: "Em uma pacata cidade onde o silêncio é a regra, a vida de uma família comum vira um pesadelo quando eventos inexplicáveis começam a se manifestar nos cantos da casa. Enquanto segredos enterrados há décadas começam a emergir, a paranoia se instala: vizinhos deixam de ser confiáveis e a própria realidade parece se desfazer. O título não é apenas um aviso, é uma contagem regressiva. Quando o sol se põe, o medo assume o controle e eles descobrem que, às vezes, o que há de mais terrível não está no que vemos, mas no que escolhemos ignorar."
+    },
+    {
         titulo: "Super Mario Galaxy - O Filme",
         idVideo: "BDyTQmUd_aw", 
         categoria: "Animação",

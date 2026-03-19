@@ -1,4 +1,11 @@
 const trailers = [
+    {
+        titulo: "Homem-Aranha: Um Novo Dia",
+        idVideo: "PlulyWs1kS4", 
+        categoria: "Ação",
+        dataPublicacao: "2026-03-19",
+        sinopse: "Nova York esqueceu o rosto de Peter Parker, mas nunca esqueceu o rastro da teia. Entre o barulho do metrô e o silêncio de um apartamento vazio, restou apenas a responsabilidade. Sem tecnologia de ponta, sem mentores e sem um nome para chamar de seu, o Homem-Aranha voltou às origens: o protetor amigável da vizinhança. Mas, nas sombras de uma cidade que nunca dorme, um novo tipo de crime está se organizando, e desta vez, Peter terá que descobrir se o herói sobrevive sem o homem por trás da máscara."
+    },
     {   
         titulo: "Algo Horrível Vai Acontecer",
         idVideo: "ia75aXrtra8", 

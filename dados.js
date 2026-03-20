@@ -1,5 +1,12 @@
 const trailers = [
     {   
+        titulo: "Sonic 4: O Filme | Teaser",
+        idVideo: "UG3JF5lWj_0", 
+        categoria: "Ação",
+        dataPublicacao: "2026-03-20",
+        sinopse: "Após a épica batalha que abalou as fundações da G.U.N., uma nova e silenciosa ameaça emerge das cinzas dos laboratórios abandonados de Robotnik. Sonic, Tails e Knuckles desfrutam de uma paz momentânea, até que um rastro de destruição azul e prateado começa a copiar cada movimento do borrão azul. Criado para ser a versão perfeita e sem fraquezas do herói, Metal Sonic surge para provar que o mundo não é grande o suficiente para dois porcos-espinhos ultrassônicos. Em uma corrida contra o tempo que atravessa dimensões, a Equipe Sonic precisará descobrir se a velocidade pura é o suficiente para vencer uma máquina programada para nunca perder."
+    },
+    {   
         titulo: "Algo Horrível Vai Acontecer",
         idVideo: "ia75aXrtra8", 
         categoria: "Terror",

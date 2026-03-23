@@ -1,5 +1,12 @@
 const trailers = [
     {
+        titulo: "Moana",
+        idVideo: "62b9PPVfacg", 
+        categoria: "Aventura",
+        dataPublicacao: "2026-03-23",
+        sinopse: "Em uma deslumbrante reimaginação em live-action, a jovem e obstinada Moana Waialiki embarca em uma missão audaciosa para salvar seu povo de uma antiga maldição que consome sua ilha. Guiada pelo oceano, ela precisa encontrar o lendário e egocêntrico semideus Maui para que ele devolva o coração de Te Fiti, a deusa da criação. Atravessando águas perigosas e enfrentando monstros colossais, Moana não apenas luta pelo futuro de sua tribo, mas também descobre sua própria identidade como mestre navegadora e o elo perdido entre os humanos e a natureza. É uma história de coragem, herança e o poder de encontrar seu lugar no mundo."
+    },
+    {
         titulo: "Homem-Aranha: Um Novo Dia",
         idVideo: "PlulyWs1kS4", 
         categoria: "Ação",

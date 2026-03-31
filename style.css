@@ -311,3 +311,65 @@ header {
 .movie-thumb-card:hover .thumb-overlay::after {
     transform: translateY(0);
 }
+
+/* =========================================
+   5. ESTRUTURA DE COLUNAS PARA ADS (GLOBAL)
+   ========================================= */
+
+/* O container pai agora não empurra o conteúdo */
+.container-principal-exibicao {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: block; /* Volta ao padrão para não esmagar os cards */
+}
+
+.coluna-ads {
+    display: none; /* Escondido por padrão (Celular/Tablet) */
+    width: 160px;
+    position: fixed; /* Fixa na tela para não sumir no scroll */
+    top: 150px;
+    z-index: 50; /* Garante que fique acima do fundo, mas abaixo de menus */
+}
+
+/* Posiciona cada uma nas extremidades da janela */
+.lateral-esquerda {
+    left: 20px;
+}
+
+.lateral-direita {
+    right: 20px;
+}
+
+.placeholder-ad {
+    background: #0a0a0a;
+    border: 1px dashed #333;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #444;
+    font-size: 11px;
+    font-family: sans-serif;
+    letter-spacing: 2px;
+}
+
+/* =========================================
+   6. REGRAS DE EXIBIÇÃO (RESPONSIVIDADE)
+   ========================================= */
+
+/* Só mostra as laterais em monitores muito grandes.
+   1650px garante que o anúncio não cubra o seu conteúdo de 1200px + respiros.
+*/
+@media (min-width: 1650px) {
+    .coluna-ads {
+        display: block;
+    }
+}
+
+/* Ajuste específico para a página de filme se o flex for necessário lá */
+.container-filme {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1100px;
+}

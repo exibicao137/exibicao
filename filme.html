@@ -6,28 +6,23 @@
     <title>Assistir | Exibição</title>
     <link rel="stylesheet" href="style.css">
     <style>
-    /* Estilos específicos para a página de exibição */
-    
-    /* NOVO: Layout Principal para as Laterais */
-    .container-principal-exibicao {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 30px;
-        padding: 0 2%;
-        min-height: 100vh;
-    }
-
-    /* AJUSTADO: Removi o margin:auto para as laterais funcionarem */
+    /* --- ESTRUTURA BASE (Não mexe no que você já tinha) --- */
     .container-filme {
-        padding: 120px 0 60px; /* Reduzi o padding lateral aqui */
+        padding: 120px 5% 60px;
         max-width: 1100px;
-        flex: 1;
+        margin: auto;
+        min-height: 100vh;
+        flex: 1; /* Novo: essencial para o modo colunas */
     }
 
-    /* NOVO: Colunas de ADS */
+    /* --- O QUE FAZ AS LATERAIS APARECEREM (Ajustado) --- */
+    .container-principal-exibicao {
+        display: block; /* Por padrão, age como se as laterais não existissem */
+        width: 100%;
+    }
+
     .coluna-ads {
-        display: none; /* Esconde no celular */
+        display: none; /* Escondido no celular e telas normais */
         width: 160px;
         position: sticky;
         top: 120px;
@@ -43,88 +38,38 @@
         justify-content: center;
         color: #444;
         font-size: 11px;
-        font-family: sans-serif;
         letter-spacing: 2px;
     }
 
-    .voltar-link {
-        display: inline-block;
-        color: var(--text-dim);
-        text-decoration: none;
-        margin-bottom: 25px;
-        font-weight: bold;
-        transition: 0.3s;
-    }
+    /* --- SEUS ESTILOS DE CONTEÚDO (Intactos) --- */
+    .voltar-link { display: inline-block; color: var(--text-dim); text-decoration: none; margin-bottom: 25px; font-weight: bold; transition: 0.3s; }
+    .voltar-link:hover { color: var(--primary); }
+    .player-wrapper { position: relative; padding-bottom: 56.25%; height: 0; background: #000; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.8); border: 1px solid #333; }
+    .player-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    .detalhes-filme { margin-top: 40px; }
+    .detalhes-filme h1 { font-size: 2.8rem; margin-bottom: 10px; color: var(--branco); }
+    .meta-info { display: flex; gap: 15px; margin-bottom: 20px; }
+    .categoria-badge { background: var(--primary); color: white; padding: 4px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; }
+    .sinopse-texto { font-size: 1.2rem; color: var(--text-dim); max-width: 800px; line-height: 1.8; }
 
-    .voltar-link:hover {
-        color: var(--primary);
-    }
-
-    /* Moldura do Player estilo Cinema */
-    .player-wrapper {
-        position: relative;
-        padding-bottom: 56.25%; /* Proporção 16:9 */
-        height: 0;
-        background: #000;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-        border: 1px solid #333;
-    }
-
-    .player-wrapper iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-
-    /* Área de Informações */
-    .detalhes-filme {
-        margin-top: 40px;
-    }
-
-    .detalhes-filme h1 {
-        font-size: 2.8rem;
-        margin-bottom: 10px;
-        color: var(--branco);
-    }
-
-    .meta-info {
-        display: flex;
-        gap: 15px;
-        margin-bottom: 20px;
-    }
-
-    .categoria-badge {
-        background: var(--primary);
-        color: white;
-        padding: 4px 12px;
-        border-radius: 4px;
-        font-size: 0.8rem;
-        font-weight: bold;
-        text-transform: uppercase;
-    }
-
-    .sinopse-texto {
-        font-size: 1.2rem;
-        color: var(--text-dim);
-        max-width: 800px;
-        line-height: 1.8;
-    }
-
-    /* RESPONSIVIDADE */
-    @media (max-width: 768px) {
-        .detalhes-filme h1 { font-size: 2rem; }
-        .container-filme { padding-top: 80px; }
-    }
-
-    /* MOSTRAR ADS SÓ EM TELAS GRANDES (Desktop) */
-    @media (min-width: 1400px) {
+    /* --- SÓ ATIVA AS LATERAIS SE A TELA FOR GIGANTE (Mínimo 1500px) --- */
+    @media (min-width: 1500px) {
+        .container-principal-exibicao {
+            display: flex; /* Aqui ele vira colunas */
+            justify-content: center;
+            padding: 0 20px;
+        }
         .coluna-ads {
             display: block;
         }
+        .container-filme {
+            margin: 0; /* Remove o auto para não empurrar as colunas */
+        }
+    }
+
+    @media (max-width: 768px) {
+        .detalhes-filme h1 { font-size: 2rem; }
+        .container-filme { padding-top: 80px; }
     }
 </style>
 

@@ -1,4 +1,12 @@
 const trailers = [
+
+    {
+        titulo: "Euphoria - 3ª Temporada",
+        idVideo: "mydZKo2V40s", 
+        categoria: "Drama",
+        dataPublicacao: "2026-03-30",
+        sinopse: "Cinco anos se passaram desde que os caminhos de East Highland se dividiram, mas as feridas da adolescência permanecem abertas. Agora, Rue tenta navegar pela sobriedade em um mundo que exige maturidade, enquanto busca um propósito que vá além da dor. Conforme o grupo se reencontra em circunstâncias inesperadas, antigos segredos de Nate, Cassie e Maddy ressurgem, provando que é impossível fugir do passado. Em uma realidade onde a euforia é passageira e as consequências são permanentes, cada um deles deverá decidir se está pronto para encarar a verdade ou se continuará perdido nas sombras de quem costumava ser."
+    },
     {
         titulo: "Moana",
         idVideo: "62b9PPVfacg", 

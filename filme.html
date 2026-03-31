@@ -6,85 +6,131 @@
     <title>Assistir | Exibição</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Estilos específicos para a página de exibição */
-        .container-filme {
-            padding: 120px 5% 60px;
-            max-width: 1100px;
-            margin: auto;
-            min-height: 100vh;
-        }
+    /* Estilos específicos para a página de exibição */
+    
+    /* NOVO: Layout Principal para as Laterais */
+    .container-principal-exibicao {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 30px;
+        padding: 0 2%;
+        min-height: 100vh;
+    }
 
-        .voltar-link {
-            display: inline-block;
-            color: var(--text-dim);
-            text-decoration: none;
-            margin-bottom: 25px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+    /* AJUSTADO: Removi o margin:auto para as laterais funcionarem */
+    .container-filme {
+        padding: 120px 0 60px; /* Reduzi o padding lateral aqui */
+        max-width: 1100px;
+        flex: 1;
+    }
 
-        .voltar-link:hover {
-            color: var(--primary);
-        }
+    /* NOVO: Colunas de ADS */
+    .coluna-ads {
+        display: none; /* Esconde no celular */
+        width: 160px;
+        position: sticky;
+        top: 120px;
+        margin-top: 120px;
+    }
 
-        /* Moldura do Player estilo Cinema */
-        .player-wrapper {
-            position: relative;
-            padding-bottom: 56.25%; /* Proporção 16:9 */
-            height: 0;
-            background: #000;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-            border: 1px solid #333;
-        }
+    .placeholder-ad {
+        background: #0a0a0a;
+        border: 1px dashed #333;
+        height: 600px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #444;
+        font-size: 11px;
+        font-family: sans-serif;
+        letter-spacing: 2px;
+    }
 
-        .player-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
+    .voltar-link {
+        display: inline-block;
+        color: var(--text-dim);
+        text-decoration: none;
+        margin-bottom: 25px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
 
-        /* Área de Informações */
-        .detalhes-filme {
-            margin-top: 40px;
-        }
+    .voltar-link:hover {
+        color: var(--primary);
+    }
 
-        .detalhes-filme h1 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-            color: var(--branco);
-        }
+    /* Moldura do Player estilo Cinema */
+    .player-wrapper {
+        position: relative;
+        padding-bottom: 56.25%; /* Proporção 16:9 */
+        height: 0;
+        background: #000;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        border: 1px solid #333;
+    }
 
-        .meta-info {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
+    .player-wrapper iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
 
-        .categoria-badge {
-            background: var(--primary);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
+    /* Área de Informações */
+    .detalhes-filme {
+        margin-top: 40px;
+    }
 
-        .sinopse-texto {
-            font-size: 1.2rem;
-            color: var(--text-dim);
-            max-width: 800px;
-            line-height: 1.8;
-        }
+    .detalhes-filme h1 {
+        font-size: 2.8rem;
+        margin-bottom: 10px;
+        color: var(--branco);
+    }
 
-        @media (max-width: 768px) {
-            .detalhes-filme h1 { font-size: 2rem; }
+    .meta-info {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .categoria-badge {
+        background: var(--primary);
+        color: white;
+        padding: 4px 12px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .sinopse-texto {
+        font-size: 1.2rem;
+        color: var(--text-dim);
+        max-width: 800px;
+        line-height: 1.8;
+    }
+
+    /* RESPONSIVIDADE */
+    @media (max-width: 768px) {
+        .detalhes-filme h1 { font-size: 2rem; }
+        .container-filme { padding-top: 80px; }
+    }
+
+    /* MOSTRAR ADS SÓ EM TELAS GRANDES (Desktop) */
+    @media (min-width: 1400px) {
+        .coluna-ads {
+            display: block;
         }
-    </style>
+    }
+</style>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9105383408775362"
+     crossorigin="anonymous"></script>
+
 </head>
 <body>
 
@@ -102,19 +148,50 @@
     </nav>
 </header>
 
-<main class="container-filme">
-    <a href="explorar.html" class="voltar-link">← Voltar ao Catálogo</a>
+<main class="container-principal-exibicao">
+    
+    <aside class="coluna-ads lateral-esquerda">
+        <div class="placeholder-ad">ANÚNCIO</div>
+    </aside>
 
-    <div class="player-wrapper" id="video-display">
+    <div class="container-filme">
+        <a href="explorar.html" class="voltar-link">← Voltar ao Catálogo</a>
+
+        <div class="player-wrapper" id="video-display"></div>
+
+        <div class="detalhes-filme">
+            <div class="meta-info">
+                <span id="filme-categoria" class="categoria-badge">Gênero</span>
+            </div>
+            <h1 id="filme-titulo">Carregando título...</h1>
+            <p id="filme-sinopse" class="sinopse-texto">Buscando informações do filme...</p>
         </div>
 
-    <div class="detalhes-filme">
-        <div class="meta-info">
-            <span id="filme-categoria" class="categoria-badge">Gênero</span>
+        <div class="detalhes-filme" style="margin-top: 60px; border-top: 1px solid #333; padding-top: 40px;">
+            <h2 style="color: var(--branco); margin-bottom: 20px;">Comentários</h2>
+            <div class="giscus"></div>
+            <script src="https://giscus.app/client.js"
+                data-repo="exibicao137/exibicao"
+                data-repo-id="R_kgDORR1h0Q"
+                data-category="Announcements"
+                data-category-id="DIC_kwDORR1h0c4C5o3B"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="noborder_dark"
+                data-lang="pt"
+                crossorigin="anonymous"
+                async>
+            </script>
         </div>
-        <h1 id="filme-titulo">Carregando título...</h1>
-        <p id="filme-sinopse" class="sinopse-texto">Buscando informações do filme...</p>
     </div>
+
+    <aside class="coluna-ads lateral-direita">
+        <div class="placeholder-ad">ANÚNCIO</div>
+    </aside>
+
 </main>
 
 <footer>
@@ -149,6 +226,21 @@
                 allowfullscreen>
             </iframe>
         `;
+
+    // 4. Configuração do Disqus
+        var disqus_config = function () {
+            this.page.url = window.location.href;  // URL completa da página
+            this.page.identifier = videoId;        // Usa o ID do vídeo como identificador único
+        };
+
+        (function() { 
+            var d = document, s = d.createElement('script');
+            // ATENÇÃO: Substitua 'SEU-NOME-AQUI' pelo nome que você criar no site do Disqus
+            s.src = 'https://SEU-NOME-AQUI.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+
     } else {
         // Se o filme não existir (ID errado), volta para o catálogo
         window.location.href = 'explorar.html';

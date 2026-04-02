@@ -1,6 +1,13 @@
 const trailers = [
 
     {
+        titulo: "Mestres Do Universo",
+        idVideo: "E_pQni-6m4c", 
+        categoria: "Aventura",
+        dataPublicacao: "2026-04-02",
+        sinopse: "O equilíbrio de Eternia foi quebrado e a magia que sustenta o universo está desaparecendo. Após décadas de um impasse sombrio, o Esqueleto descobre um segredo ancestral escondido nas profundezas do Castelo de Grayskull, ameaçando mergulhar toda a existência na escuridão eterna. Agora, o príncipe Adam deve aceitar um destino que ele tentou evitar por anos, erguendo a Espada do Poder para se tornar o lendário He-Man. Unindo velhos aliados e enfrentando traições inesperadas, ele precisará provar que o verdadeiro poder não reside apenas na força bruta, mas na coragem de proteger a liberdade de todos os mundos. A batalha final pelo poder de Grayskull começou."
+    },
+    {
         titulo: "Euphoria - 3ª Temporada",
         idVideo: "mydZKo2V40s", 
         categoria: "Drama",

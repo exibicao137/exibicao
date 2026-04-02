@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://exibicao137.github.io/exibicao/sitemap.xml

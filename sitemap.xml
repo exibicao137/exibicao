@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Página Principal -->
+  <url>
+    <loc>https://www.exibicao.com.br/index.html</loc>
+    <priority>1.0</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <!-- Catálogo / Página de Exploração -->
+  <url>
+    <loc>https://www.exibicao.com.br/explorar.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <!-- Páginas Institucionais -->
+  <url>
+    <loc>https://www.exibicao.com.br/sobre.html</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.exibicao.com.br/contato.html</loc>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Páginas Legais (Obrigatórias para AdSense) -->
+  <url>
+    <loc>https://www.exibicao.com.br/privacidade.html</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.exibicao.com.br/termos.html</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.exibicao.com.br/explorar.html</loc>
+    <lastmod>2026-04-02</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Exemplo de URL dinâmica para filmes específicos -->
+  <!-- Você deve adicionar uma entrada para cada ID presente no seu arquivo dados.js -->
+  <url>
+    <loc>https://www.exibicao.com.br/filme.html?id=exemplo-filme</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Filmes principais -->
+  <url>
+    <loc>https://www.exibicao.com.br/filme.html?id=62b9PPVfacg</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.exibicao.com.br/filme.html?id=PlulyWs1kS4</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.exibicao.com.br/filme.html?id=UG3JF5lWj_0</loc>
+    <priority>0.7</priority>
+  </url>
+</urlset>

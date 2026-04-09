@@ -1,6 +1,13 @@
 const trailers = [
 
     {
+        titulo: "O Justiceiro: Uma Última Morte",
+        idVideo: "enwdRAR04fA", 
+        categoria: "Ação / Thriller",
+        dataPublicacao: "2026-04-09",
+        sinopse: "Frank Castle está cansado de fugir do seu passado, mas o passado nunca cansou de caçá-lo. Neste especial, após o surgimento de uma nova e impiedosa facção criminosa que utiliza táticas militares para aterrorizar Nova York, o Justiceiro decide sair das sombras para uma última guerra de um homem só. Sem aliados, sem misericórdia e com munição limitada, Frank se vê encurralado em um jogo de gato e rato onde a linha entre herói e monstro se apaga de vez. Quando o sistema falha, o veredito de Castle é final. Prepare-se para o capítulo mais brutal da jornada do vigilante."
+    },
+    {
         titulo: "Mestres Do Universo",
         idVideo: "E_pQni-6m4c", 
         categoria: "Aventura",
